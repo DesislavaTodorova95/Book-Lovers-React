@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import logo from "../../static/logo.png";
 const Header = () => {
   return (
-    <nav>
-      <div class="nav-wrapper">
-      
-        <ul id="navigation" class="navWrapper">
+    <div class="container">
+      <img src={logo} class="logo" />
+      <nav>
+        <ul>
           <li>
             <Link to="/login">Login</Link>
           </li>
@@ -21,16 +22,46 @@ const Header = () => {
             <Link to="/">My Favourites</Link>
           </li>
         </ul>
-      </div>
+      </nav>
 
       <style jsx>{`
-        .nav-wrapper {
+       
+        li a {
+          text-decoration: none;
+        }
+        .container {
           display: flex;
+          margin: 0 auto;
+          width: 100%;
+          height: 120px;
+         background: #f5cb79;
+        }
+        .logo {
+        
+          float: left;
+          padding: 10px 0;
+          }
+        nav ul{
+          float:right;
+        
+       }
+        nav li{
+         display: inline-block;
+              float: right;
+        margin-left: 70px;
+         padding-top: 25px;
+        }
+        a{
+          color: #551A8B;
+          font-size: 28px;
+          font-family: "Brush Script MT", cursive;
          
         }
-      
+        a:hover{
+         color: #A1033D
+        }
       `}</style>
-    </nav>
+    </div>
   );
 };
 export default Header;
