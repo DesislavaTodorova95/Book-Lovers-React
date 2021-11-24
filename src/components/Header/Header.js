@@ -21,6 +21,9 @@ const Header = () => {
           <li>
             <Link to="/my-favourites">My Favourites</Link>
           </li>
+          <li>
+            <Link to="/all-books">Catalog</Link>
+          </li>
         </ul>
       </nav>
 
@@ -31,7 +34,7 @@ const Header = () => {
         }
         .container {
           background: #f5cb79;
-          position fixed;
+         
           text-align: center;
           z-index: 999;
           display: flex;
@@ -43,7 +46,7 @@ const Header = () => {
         }
         nav{
         text-align: right; 
-        width: 80% 
+        position: center;
         }
         .logo {
         
@@ -64,13 +67,35 @@ const Header = () => {
           color: #551A8B;
           font-size: 28px;
           font-family: "Brush Script MT", cursive;
-          display: block;
+          display: inline-block;
           width: 100%
           height: 5px;
           }
         a:hover{
          color: #A1033D
         }
+        @media screen and (max-width: 580px) {
+          .logo{display: none;}
+          .container {
+    padding: 20px 10px !important; 
+    height: auto;
+    
+  }
+  ul{
+    float:left;
+  }
+    nav a {
+      width: 100px;
+display: block;
+text-align: center;
+padding: 12px;
+    padding-top: 12px;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+float: left;
+    
+  }
       `}</style>
     </div>
   );
