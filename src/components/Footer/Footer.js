@@ -3,11 +3,16 @@ import { Fragment } from "react/cjs/react.production.min";
 const Footer = () => {
   return (
     <Fragment>
-      <p className="Footer">&copy; 2021</p>
+      <p className="footer">&copy; 2021</p>
       <style jsx>{`
-        .Footer {
-          text-align: center;
-          position:fixed;bottom:0; width:100%; display:block;
+        .footer {
+   position:absolute;
+   text-align: center;
+   bottom:0;
+   width:100%;
+   
+   
+   color: black;
         }
       `}</style>
     </Fragment>

@@ -7,22 +7,22 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/login">Login</Link>
+            <Link className="nav-link" to="/logout">Logout</Link>
           </li>
           <li>
-            <Link to="/register">Register</Link>
+            <Link className="nav-link" to="/register">Register</Link>
           </li>
           <li>
-            <Link to="/logout">Logout</Link>
+            <Link className="nav-link" to="/login">Login</Link>
           </li>
           <li>
-            <Link to="/add-book">Add Book</Link>
+            <Link className="nav-link" to="/add-book">Add Book</Link>
           </li>
           <li>
-            <Link to="/my-favourites">My Favourites</Link>
+            <Link className="nav-link" to="/my-favourites">My Favourites</Link>
           </li>
           <li>
-            <Link to="/all-books">Catalog</Link>
+            <Link className="nav-link" to="/all-books">Catalog</Link>
           </li>
         </ul>
       </nav>
@@ -63,7 +63,7 @@ const Header = () => {
          padding-top: 25px;
          position: relative;
         }
-        a{
+        .nav-link{
           color: #551A8B;
           font-size: 28px;
           font-family: "Brush Script MT", cursive;

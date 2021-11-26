@@ -7,6 +7,8 @@ import { Component } from "react/cjs/react.production.min";
 import Footer from "./components/Footer/Footer";
 import RegisterPage from "./components/Register/RegisterPage";
 import CatalogPage from "./components/CatalogPage/CatalogPage";
+import Favourites from "./components/Favourites/Favourite";
+import AddBook from "./components/AddBook/AddBook";
 
 class App extends Component {
   render(){return (
@@ -17,9 +19,10 @@ class App extends Component {
       <Route path="/all-books" component={CatalogPage}/>
       <Route  path= "/login" exact component={LoginPage}/>
       <Route  path= "/register" exact component={RegisterPage}/>
-      
+      <Route path="/my-favourites" component={Favourites}/>
+       <Route path="/add-book" component={AddBook} />
      </Switch>
-      <Footer />
+        <Footer />
      
     </div>
   );}

@@ -29,13 +29,19 @@ class HomePage extends Component {
               margin 30px
           }
           .HomeWrapper a{
-              text-align: center;
-              width: 100px;
-              background-color: #FBEDD2;
-              height: 50px;
-              border: 3px solid #551A8B;
-              border-radius: 4px;
-              margin-top: 20px;
+            text-align: center;
+width: 100px;
+background-color: #FBEDD2;
+height: 50px;
+border: 3px solid #551A8B;
+border-radius: 4px;
+margin-top: 30px;
+padding-top: 3px;
+text-decoration: none;
+font-family: "Brush Script MT", cursive;
+padding-top: 8px;
+font-size: 27px;
+display: inline-block;
           }
         `}</style>
       </div>

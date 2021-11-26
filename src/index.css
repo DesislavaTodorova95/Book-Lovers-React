@@ -6,8 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: beige;
-  background-image: url('../src/static/background.jpg');
+  background-color: #8E66B1;
+  /* background-image: url('../src/static/back.jpg'); */
 }
 
 code {
