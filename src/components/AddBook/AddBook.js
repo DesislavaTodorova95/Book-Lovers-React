@@ -2,7 +2,7 @@ import { Component } from "react/cjs/react.production.min";
 import AddEditBookForm from "../AddEditBookForm/AddEditBookForm";
 
 class AddBook extends Component{
-    render(){return <div class="add-form">
+    render(){return <div className="add-form">
     <h2>ADD BOOK</h2>
    <AddEditBookForm />
    <style jsx>{`.add-form {

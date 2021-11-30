@@ -1,13 +1,13 @@
-const url = `http://localhost:5000/books`;
+import baseUrl from './api'
 
 const getAll = () => {
-  return fetch(url)
+  return fetch(`${baseUrl}/books`)
     .then((res) => res.json())
 
     .catch((error) => console.log(error));
 };
 const getOne = (bookId) => {
-  return fetch(`${url}/${bookId}`)
+  return fetch(`${baseUrl}/books/${bookId}`)
     .then((res) => res.json())
     .catch((error) => console.log(error));
 };

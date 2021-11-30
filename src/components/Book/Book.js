@@ -1,24 +1,32 @@
 import { FaHeart } from "react-icons/fa";
-const Book = ()=>{
-   
+import { Link } from "react-router-dom";
+const Book = ({_id,
+  title, author, description, imageUrl, likes, addedBy, comments,
+})=>{
+  
+  
 return(
-    <div className="book">
-    <div className="imgSection">
-        <img className="book-image" src="https://cf.shopee.com.my/file/15e0a90a4e9a64b1624923fd0072c105" alt="Harry Potter 1st book Cover"/>
-        <p className="author"> <small>by J.K Rowling</small></p>
-   </div>     
+<div className="book">
+  <div className="imgSection">
+        <img className="book-image" src={imageUrl} alt="Harry Potter 1st book Cover"/>
+        <p className="author"> <small>{author}</small></p>
+  </div>     
  <div className='book-info'>
-    <h1 className='book-title'><strong>Harry Potter First</strong></h1>
+    <h1 className='book-title'><strong>{title}</strong></h1>
        <h3 className="description">
-          This is a wonderfull book for litttle ones and grown ones. i personaly love it.  Ill never stop reading it all over again</h3>
+      {description}</h3>
         <div className='btns-div'>
         
          <button className="btn likeBtn">Like</button>
-         <p className="likes-counter"><i className="material-icons"><FaHeart /></i>5</p></div>
-         <button className='btn detailsBtn'>Details</button>
+         <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{likes? Number(likes): 0}</p></div>
+         <Link to={`/books/details/${_id}`}>
+         <button className='btn'>Details</button>
+  </Link>
         
+       
+ </div>
    
-        </div>
+ 
 <style jsx>{`.book {
   width: 45%;
   height: auto;
@@ -82,10 +90,9 @@ border-bottom: 1px solid #551a8b;
   font-size: 16px;
 }
 .likes-counter{text-align: center;}
-
-
 `}</style>
-         </div>  
+
+</div>  
 )
 }
 export default Book;

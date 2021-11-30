@@ -9,6 +9,7 @@ import RegisterPage from "./components/Register/RegisterPage";
 import CatalogPage from "./components/CatalogPage/CatalogPage";
 import Favourites from "./components/Favourites/Favourite";
 import AddBook from "./components/AddBook/AddBook";
+import BookDetails from "./components/BookDetails/BookDetails";
 
 class App extends Component {
   render(){return (
@@ -16,11 +17,12 @@ class App extends Component {
         <Header />
      <Switch>
       <Route  path="/" exact component={HomePage}/>
-      <Route path="/all-books" component={CatalogPage}/>
+      <Route path="/books/allBooks" exact component={CatalogPage}/>
+      <Route path="/books/details/:bookId" component={BookDetails}/>
       <Route  path= "/login" exact component={LoginPage}/>
       <Route  path= "/register" exact component={RegisterPage}/>
-      <Route path="/my-favourites" component={Favourites}/>
-       <Route path="/add-book" component={AddBook} />
+      <Route path="/books/my-favourites" component={Favourites}/>
+       <Route path="/books/add-book" component={AddBook} />
      </Switch>
         <Footer />
      

@@ -6,27 +6,27 @@ class AddEditBookForm extends Component{
     }
     render(){
         return ( <form>
-            <div class="book-box">
+            <div className="book-box">
                
                   <p>
-                    <label for="">Book Title</label>
+                    <label htmlFor="">Book Title</label>
                     <input type="text"/>
                   </p>
                   <p>
-                    <label for="">Book Author</label>
+                    <label htmlFor="">Book Author</label>
                     <input type="text"/>
                   </p>
                   
                   <p>
-                    <label for="">Book Genre</label>
+                    <label htmlFor="">Book Genre</label>
                     <input type="text"/>
                   </p>
                   <p>
-                    <label for="">Book Image</label>
+                    <label htmlFor="">Book Image</label>
                     <input type="text"/>
                   </p>
                   <p>
-                    <label for="">Book Description</label>
+                    <label htmlFor="">Book Description</label>
                     <textarea name="" id="" cols="30" rows="7"></textarea>
                   </p>
                    <a href="#">

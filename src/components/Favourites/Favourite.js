@@ -1,15 +1,18 @@
-import { Component } from "react/cjs/react.production.min"
+import { useState, useEffect } from "react"
 import Book from "../Book/Book"
 
-class Favourites extends Component{
-constructor(props){
-    super(props)
-}
-    render(){
+const Favourites = ()=>{
+   const [myBooks, setMyBooks] = useState([]);
+   useEffect(()=>{
+
+   }, [])
+
+   //when auth is done i must set this part 
+  const defaultBook = {_id: '2331323', title: 'Harry Potter second', author:" J.K Rowling", description: ' This is a wonderfull book for litttle ones and grown ones', imageUrl:'https://images-na.ssl-images-amazon.com/images/I/91HHqVTAJQL.jpg', }
         return (
          <div id='favourites'>
              <h1 className='favourites-head'>My Favourite Books</h1>
-            <Book />
+            <Book key={defaultBook._id} {...defaultBook}/>
             <style jsx>{`.favourites-head {
             text-transform: capitalize;
             width: 100%;
@@ -22,7 +25,7 @@ constructor(props){
           }`}</style>
         </div>
            )
-    }
+    
 
 }
 export default Favourites;
