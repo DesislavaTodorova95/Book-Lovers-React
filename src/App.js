@@ -14,13 +14,13 @@ import BookDetails from "./components/BookDetails/BookDetails";
 class App extends Component {
   render(){return (
     <div id="root">
-        <Header />
+     <Header />
      <Switch>
       <Route  path="/" exact component={HomePage}/>
       <Route path="/books/allBooks" exact component={CatalogPage}/>
       <Route path="/books/details/:bookId" component={BookDetails}/>
-      <Route  path= "/login" exact component={LoginPage}/>
-      <Route  path= "/register" exact component={RegisterPage}/>
+      <Route  path= "/auth/login" exact component={LoginPage}/>
+      <Route  path= "/auth/register" exact component={RegisterPage}/>
       <Route path="/books/my-favourites" component={Favourites}/>
        <Route path="/books/add-book" component={AddBook} />
      </Switch>

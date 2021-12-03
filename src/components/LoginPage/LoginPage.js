@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 class LoginPage extends Component{
 
@@ -9,19 +10,19 @@ class LoginPage extends Component{
           <form>
             <div className="user-box">
               <input type="text" name="" required=""/>
-              <label>Username</label>
+              <label>Email</label>
             </div>
             <div className="user-box">
               <input type="password" className="" required=""/>
               <label>Password</label>
             </div>
-            <a href="#">
+            <Link to="/">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Submit
-            </a>
+            </Link>
           </form>
           <style jsx>{`.login-box {
     position: absolute;

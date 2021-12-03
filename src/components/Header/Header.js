@@ -7,29 +7,39 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <Link className="nav-link" to="/logout">Logout</Link>
+            <Link className="nav-link" to="/auth/logout">
+              Logout
+            </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/register">Register</Link>
+            <Link className="nav-link" to="/auth/register">
+              Register
+            </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/login">Login</Link>
+            <Link className="nav-link" to="/auth/login">
+              Login
+            </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/books/add-book">Add Book</Link>
+            <Link className="nav-link" to="/books/add-book">
+              Add Book
+            </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/books/my-favourites">My Favourites</Link>
+            <Link className="nav-link" to="/books/my-favourites">
+              My Favourites
+            </Link>
           </li>
           <li>
-            <Link className="nav-link" to="/books/allBooks">Catalog</Link>
+            <Link className="nav-link" to="/books/allBooks">
+              Catalog
+            </Link>
           </li>
         </ul>
       </nav>
 
-      <style jsx>{`
-       
-        li a {
+      <style jsx>{`li a {
           text-decoration: none;
         }
         .container {
@@ -75,12 +85,12 @@ const Header = () => {
          color: #A1033D
         }
         @media screen and (max-width: 580px) {
-          .logo{display: none;}
+          .logo{display: none}
           .container {
     padding: 20px 10px !important; 
     height: auto;
     
-  }
+         }
   ul{
     float:left;
   }
@@ -94,9 +104,8 @@ padding: 12px;
     padding-bottom: 12px;
     padding-left: 12px;
 float: left;
-    
-  }
-      `}</style>
+}
+}  `}</style>
     </div>
   );
 };

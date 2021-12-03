@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 class RegisterPage extends Component{
 render(){
@@ -7,7 +8,7 @@ render(){
     <form>
       <div className="user-box">
         <input type="text" name="" required=""/>
-        <label>Username</label>
+        <label>Email</label>
       </div>
       <div className="user-box">
         <input type="password" name="" required=""/>
@@ -17,13 +18,13 @@ render(){
         <input type="re-pass" name="" required=""/>
         <label>Repeat Password</label>
       </div>
-      <a href="#">
+      <Link to="/">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         Submit
-      </a>
+      </Link>
     </form>
     <style jsx>{`.register-box {
     position: absolute;
