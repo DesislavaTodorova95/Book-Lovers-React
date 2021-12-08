@@ -1,57 +1,90 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import axios from "axios";
 // import { Link } from "react-router-dom";
 import ErrorsContext from "../contexts/ErrorContext";
-// import UserContext from "../contexts/UserContext";
+import UserContext from "../contexts/UserContext";
 
-const RegisterPage = () => {
+const RegisterPage = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePass, setRepass] = useState("");
-  const [, setToken] = useState(null);
-const [, setUserId]= useState(null);
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const { userInfo, setUserInfo } = useContext(UserContext);
 
-const { setValue} = useContext(ErrorsContext);
- const onRegisterSubmit = async(e) => {
+  useEffect(() => {
+    if (!userInfo) {
+      localStorage.clear("sess-token");
+      setToken(null);
+      setUserId(null);
+      
+    }
+  }, [userInfo, history]);
+  const { setValue } = useContext(ErrorsContext);
+  const onRegisterSubmit = async (e) => {
     e.preventDefault();
- 
-    
-    try{
-   const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-   };
-   const  { data } =await axios.post('http://localhost:5000/auth/register', {email, password, rePass}, config);
-     console.log(data)
-    
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:5000/auth/register",
+        { email, password, rePass },
+        config
+      );
+
       setUserId(data.userId);
       setToken(data.token);
-      localStorage.setItem('sess-token', data.token)
+      setUserInfo({ userId, token });
+
+      localStorage.setItem("sess-token", data.token);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("email", data.email)
       
-     } catch(error){ setValue(error.response.data)
-     }
+      history.push("/");
+    } catch (error) {
+      setValue(error.response.data);
+    }
   };
 
   return (
     <div className="register-box">
-      
-   
-
       <h2>Register</h2>
       <form onSubmit={onRegisterSubmit} id="submitForm">
         <div className="user-box">
-          <input type="text" name="email" onChange={(e)=>{setEmail(e.target.value)}}  value={email}/>
+          <input
+            type="text"
+            name="email"
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            value={email}
+          />
           <label htmlFor="email">Email</label>
         </div>
         <div className="user-box">
-          
-          <input type="password" name="password" onChange={(e)=>{setPassword(e.target.value)}} value={password} />
+          <input
+            type="password"
+            name="password"
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+            value={password}
+          />
           <label htmlFor="password">Password</label>
         </div>
         <div className="user-box">
-        
-          <input type="password" name="rePass" onChange={(e)=>{setRepass(e.target.value)}} value={rePass}/>
+          <input
+            type="password"
+            name="rePass"
+            onChange={(e) => {
+              setRepass(e.target.value);
+            }}
+            value={rePass}
+          />
           <label htmlFor="rePass">Repeat Password</label>
         </div>
 

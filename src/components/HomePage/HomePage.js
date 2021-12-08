@@ -3,15 +3,17 @@ import { Component } from "react/cjs/react.production.min";
 
 class HomePage extends Component {
   render() {
+    const userEmail = localStorage.getItem('email');
+    
     return (
       <div className="HomeWrapper">
-        <h1>Wellcome to BOOK-LOVERS platform</h1>
+        <h1>{userEmail ? userEmail +', ' : ''}Wellcome to BOOK-LOVERS platform</h1>
         <p>
           Here You can add your favourite books, that you want to share with
           others, or find new ones for you to read
         </p>
 
-        <Link to="/all-books">Catalog</Link>
+        <Link to="/books/allBooks">Catalog</Link>
 
         <style jsx>{`
           .HomeWrapper {

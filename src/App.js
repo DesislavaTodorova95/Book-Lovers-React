@@ -16,9 +16,14 @@ import { useState } from "react";
 import ErrorComponent from "./components/ErrorComponent/ErrorComponenet";
 function App (){
  const [value, setValue]= useState(null)
+ const [userInfo, setUserInfo]= useState(null)
+ const logoutHandle= ()=>{
+   localStorage.clear(); 
+setUserInfo(null)
+}
   return (
     <div id="root">
-      <UserContext.Provider value ={{userId: '', token: '' }}>
+      <UserContext.Provider value ={{userInfo, setUserInfo }}>
         <ErrorsContext.Provider value={{value, setValue}}>
      <Header />
      <ErrorComponent></ErrorComponent>
@@ -30,6 +35,7 @@ function App (){
       <Route  path= "/auth/register" exact component={RegisterPage}/>
       <Route path="/books/my-favourites" component={Favourites}/>
        <Route path="/books/add-book" component={AddBook} />
+       <Route path="/auth/logout" logoutHandle/>
      </Switch>
      </ErrorsContext.Provider>
         <Footer />

@@ -1,28 +1,74 @@
-import { Component } from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import ErrorsContext from "../contexts/ErrorContext";
+import { useContext, useState, useEffect } from "react/cjs/react.development";
+import UserContext from "../contexts/UserContext";
 
-class LoginPage extends Component{
+const LoginPage =({history})=>{
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null);
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  
+  useEffect(() => { 
 
-    render(){
+    if (!userInfo) {
+      localStorage.clear("sess-token");
+
+      setToken(null);
+      setUserId(null);
+     
+    }
+  }, [userInfo, history]);
+  const { setValue } = useContext(ErrorsContext);
+  const onLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const { data } = await axios.post(
+        "http://localhost:5000/auth/login",
+        { email, password },
+        config
+      );
+
+      setUserId(data.userId);
+      setToken(data.token);
+      setUserInfo({ userId, token });
+
+      localStorage.setItem("sess-token", data.token);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("email", data.email)
+     
+      history.push("/");
+    } catch (error) {
+      setValue(error.response.data);
+    }
+  };
+
         return (
           <div className="login-box">
           <h2>Login</h2>
-          <form>
+          <form id="submitForm" onSubmit={onLoginSubmit}>
             <div className="user-box">
-              <input type="text" name="" required=""/>
-              <label>Email</label>
+              <input type="text" name="email" onChange={(e)=>setEmail(e.target.value)} value={email}/>
+              <label htmlFor='email'>Email</label>
             </div>
             <div className="user-box">
-              <input type="password" className="" required=""/>
-              <label>Password</label>
+              <input type="password" name="password" onChange={e=> setPassword(e.target.value)} value={password}/>
+              <label htmlFor="password">Password</label>
             </div>
-            <Link to="/">
+            <button type="submit" form="submitForm" className="btnSubmit">
               <span></span>
               <span></span>
               <span></span>
               <span></span>
               Submit
-            </Link>
+            </button>
           </form>
           <style jsx>{`.login-box {
     position: absolute;
@@ -37,7 +83,11 @@ class LoginPage extends Component{
     border-radius: 10px;
     background-color: black;
   }
-  
+  .btnSubmit {
+          background-color: black;
+
+          border: none;
+        }
   .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
@@ -79,7 +129,7 @@ class LoginPage extends Component{
     font-size: 12px;
   }
   
-  .login-box form a {
+  .login-box form .btnSubmit {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
@@ -93,7 +143,7 @@ class LoginPage extends Component{
     letter-spacing: 4px
   }
  
-  .login-box a:hover {
+  .login-box .btnSubmit:hover {
     background: #ac76df;
     color: #fff;
     border-radius: 5px;
@@ -103,12 +153,12 @@ class LoginPage extends Component{
                 0 0 100px #551A8B;
   }
   
-  .login-box a span {
+  .login-box .btnSubmit span {
     position: absolute;
     display: block;
   }
   
-  .login-box a span:nth-child(1) {
+  .login-box .btnSubmit span:nth-child(1) {
     top: 0;
     left: -100%;
     width: 100%;
@@ -126,7 +176,7 @@ class LoginPage extends Component{
     }
   }
   
-  .login-box a span:nth-child(2) {
+  .login-box .btnSubmit span:nth-child(2) {
     top: -100%;
     right: 0;
     width: 2px;
@@ -145,7 +195,7 @@ class LoginPage extends Component{
     }
   }
   
-  .login-box a span:nth-child(3) {
+  .login-box .btnSubmit span:nth-child(3) {
     bottom: 0;
     right: -100%;
     width: 100%;
@@ -164,7 +214,7 @@ class LoginPage extends Component{
     }
   }
   
-  .login-box a span:nth-child(4) {
+  .login-box .btnSubmit span:nth-child(4) {
     bottom: -100%;
     left: 0;
     width: 2px;
@@ -184,6 +234,6 @@ class LoginPage extends Component{
   }
   `}</style>
         </div> )
-    }
+    
 }
 export default LoginPage;

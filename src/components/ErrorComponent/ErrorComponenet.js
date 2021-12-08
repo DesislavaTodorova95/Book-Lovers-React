@@ -1,21 +1,28 @@
 import { useContext } from "react";
+import { useEffect } from "react/cjs/react.development";
 import ErrorsContext from "../contexts/ErrorContext";
 
 const  ErrorComponent=()=> {
-  const { value,  } = useContext(ErrorsContext);
+  const { value,  setValue } = useContext(ErrorsContext);
+ 
   let valueList = []
  if (value && value.length > 1){
-  
+ 
    Object.values(value).map((x)=> valueList.push(x) );
-   valueList = valueList.join('')
+   valueList = valueList.join(' ')
  }
-  
-     return(
+ useEffect(()=>{setTimeout(() => {
+   setValue(null)
+  console.log(value)
+ }, 6000);},[setValue, value])
+ 
+ 
+     return( 
       <article id="errorArticle" style={{display: value ? 'inline' : "none"}}>
         <div className="alert">
             <p className="errorParag">{valueList || value}</p>
-            <style>{`
-              .errorArticle {
+            <style jsx>{`
+              .errorParag {
                 margin: 2px;
                 padding: 2px;
                 background-color: #ff6c37;
@@ -41,8 +48,10 @@ const  ErrorComponent=()=> {
             `}</style>
           </div>
           </article>
+           
+           
         )
-    
+      
   
 }
 
