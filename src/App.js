@@ -16,8 +16,8 @@ import { useState } from "react";
 
 import ErrorComponent from "./components/ErrorComponent/ErrorComponenet";
 import EditBook from "./components/EditBook/EditBook";
-import { useEffect } from "react/cjs/react.development";
-function App({history}) {
+
+function App() {
   const [value, setValue] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 

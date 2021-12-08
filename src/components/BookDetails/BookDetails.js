@@ -1,49 +1,44 @@
 import { FaHeart } from "react-icons/fa"
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
-import bookServices from "../../services/BookService";
+
+import baseUrl from "../../services/api"
 const BookDetails = (props)=> {
-    const [likes, setLikes] = useState(0)
-    const [imageUrl, setImageUrl]= useState('')
-    const [author, setAuthor]= useState('')
-    const [title, setTitle]= useState('')
-    const [description, setDescription]= useState('')
-    const [addedBy, setAddedBy]= useState('')
-    const [comments, setComments]= useState('')
-    const[ bookId, setBookId]= useState('')
-    
-   
+ const [book, setBook]= useState(''); 
+//  const [author, setAuthor]= useState('');
+//  const [likes, setLikes] = useState(0);
+//  const [description, setDescription] = useState('')
+//  const [title, setTitle]= useState('')
+//  const [imageUrl, setImageUrl] = useState('')
+//  const [bookId, setBookId] = useState('')
+//  const[comments, setComments] = useState('')
+ const id =props.match.params.bookId
     useEffect(()=>{
-        const id =props.match.params.bookId
-        const book = bookServices.getOne(id);
-        setLikes(book.likes);
-        setTitle(book.title);
-        setAuthor(book.author)
-        setDescription(book.description);
-        setAddedBy(book.addedBy);
-        setComments(book.comments);
-        setImageUrl(book.imageUrl);
-        setBookId(book._id);
-    },[props.match.params.bookId])
-    
-
-
-
-
-    return( <div className="book">
+      fetch(`${baseUrl}/books/${id}`).then(res=> res.json())
+       .then((result)=> setBook({result}))
+       .catch((error) => console.log(error));
+      
+     },[id])
+     console.log(book)
+//    setAuthor(book.author);
+//    setLikes(book.likes);
+//    setBookId(book._id);
+//    setComments(book.comments);
+//    setDescription(book.description)
+   return( <div className="book">
     <div className="imgSection">
-          <img className="book-image" src={imageUrl} alt="Harry Potter 1st book Cover"/>
-          <p className="author"> <small>{author}</small></p>
+          <img className="book-image" value={book.imageUrl} alt="Harry Potter 1st book Cover"/>
+          <p className="author"> <small value={book.author}></small></p>
     </div>     
    <div className='book-info'>
-      <h1 className='book-title'><strong>{title}</strong></h1>
+      <h1 className='book-title'><strong value={book.title}></strong></h1>
          <h3 className="description">
-        {description}</h3>
+        {book.description}</h3>
           <div className='btns-div'>
           
           <button className="btn likeBtn">Like</button> 
-            <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{likes? Number(likes): 0}</p></div>
-           <Link to={`/books/edit/${bookId}`}>
+            <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{book.likes? Number(book.likes): 0}</p></div>
+           <Link to={`/books/edit/${book.bookId}`}>
            <button className='btn'>Edit</button>
     </Link>
           
