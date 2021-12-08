@@ -1,10 +1,11 @@
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useContext } from "react/cjs/react.development";
+import UserContext from "../contexts/UserContext";
 const Book = ({_id,
   title, author, description, imageUrl, likes, addedBy, comments,
 })=>{
-  
-  
+  const {userInfo, }= useContext(UserContext)
 return(
 <div className="book">
   <div className="imgSection">
@@ -17,8 +18,8 @@ return(
       {description}</h3>
         <div className='btns-div'>
         
-         <button className="btn likeBtn">Like</button>
-         <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{likes? Number(likes): 0}</p></div>
+       {userInfo ? <button className="btn likeBtn">Like</button> : <p>Likes</p>} 
+          <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{likes? Number(likes): 0}</p></div>
          <Link to={`/books/details/${_id}`}>
          <button className='btn'>Details</button>
   </Link>

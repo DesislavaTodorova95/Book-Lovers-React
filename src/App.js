@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import { Switch ,Route } from 'react-router-dom';
+import { Switch, Route } from "react-router-dom";
 import LoginPage from "./components/LoginPage/LoginPage";
 import HomePage from "./components/HomePage/HomePage";
 import "./App.css";
@@ -13,36 +13,43 @@ import BookDetails from "./components/BookDetails/BookDetails";
 import ErrorsContext from "./components/contexts/ErrorContext";
 import UserContext from "./components/contexts/UserContext";
 import { useState } from "react";
+
 import ErrorComponent from "./components/ErrorComponent/ErrorComponenet";
-function App (){
- const [value, setValue]= useState(null)
- const [userInfo, setUserInfo]= useState(null)
- const logoutHandle= ()=>{
-   localStorage.clear(); 
-setUserInfo(null)
-}
+import EditBook from "./components/EditBook/EditBook";
+import { useEffect } from "react/cjs/react.development";
+function App({history}) {
+  const [value, setValue] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
+
+  const logoutHandle = () => {
+    localStorage.clear();
+    setUserInfo(null);
+    
+   }
+
+
   return (
     <div id="root">
-      <UserContext.Provider value ={{userInfo, setUserInfo }}>
-        <ErrorsContext.Provider value={{value, setValue}}>
-     <Header />
-     <ErrorComponent></ErrorComponent>
-     <Switch>
-      <Route  path="/" exact component={HomePage}/>
-      <Route path="/books/allBooks" exact component={CatalogPage}/>
-      <Route path="/books/details/:bookId" component={BookDetails}/>
-      <Route  path= "/auth/login" exact component={LoginPage}/>
-      <Route  path= "/auth/register" exact component={RegisterPage}/>
-      <Route path="/books/my-favourites" component={Favourites}/>
-       <Route path="/books/add-book" component={AddBook} />
-       <Route path="/auth/logout" logoutHandle/>
-     </Switch>
-     </ErrorsContext.Provider>
+      <UserContext.Provider value={{ userInfo, setUserInfo }}>
+        <ErrorsContext.Provider value={{ value, setValue }}>
+          <Header />
+          <ErrorComponent></ErrorComponent>
+          <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/books/allBooks" exact component={CatalogPage} />
+            <Route path="/books/details/:bookId" component={BookDetails} />
+            <Route path="/books/edit/:bookId" component={EditBook} />
+            <Route path="/auth/login" exact component={LoginPage} />
+            <Route path="/auth/register" exact component={RegisterPage} />
+            <Route path="/books/my-favourites" component={Favourites} />
+            <Route path="/books/add-book" component={AddBook} />
+            <Route path="/auth/logout" render={({history})=>{logoutHandle(); history.push('/')}} />
+          </Switch>
+        </ErrorsContext.Provider>
         <Footer />
-        </UserContext.Provider>
+      </UserContext.Provider>
     </div>
   );
-
 }
 
 export default App;

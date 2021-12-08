@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
+
 import baseUrl from "../../services/api";
 import Book from "../Book/Book";
+
 const CatalogPage = () => {
   const [books, setBooks] = useState([]);
-
+ 
   useEffect(() => {
     fetch(`${baseUrl}/books`)
       .then((res) => res.json())
