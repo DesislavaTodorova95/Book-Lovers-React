@@ -1,11 +1,9 @@
-import { Component } from "react";
 
-class AddEditBookForm extends Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return ( <form>
+
+ const addBookForm= ()=>{
+    
+
+        return ( <form id="addBookForm">
             <div className="book-box">
                
                   <p>
@@ -29,13 +27,13 @@ class AddEditBookForm extends Component{
                     <label htmlFor="">Book Description</label>
                     <textarea name="" id="" cols="30" rows="7"></textarea>
                   </p>
-                   <a href="#">
+                  <button type="submit" form="addBookForm" className="btnSubmit">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
                     Submit
-                  </a>
+                 </button>
   
                   </div>
      
@@ -45,10 +43,10 @@ class AddEditBookForm extends Component{
   color: #551a8b;
 }
 
-.add-form .book-box {
+#addBookForm .book-box {
   position: relative;
 }
-form a {
+form button {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -62,7 +60,7 @@ form a {
   letter-spacing: 4px;
 }
 
-form a:hover {
+form button:hover {
   background: #ac76df;
   color: #fff;
   border-radius: 5px;
@@ -70,12 +68,12 @@ form a:hover {
     0 0 100px #551a8b;
 }
 
-a span {
+button span {
   position: absolute;
   display: block;
 }
 
-a span:nth-child(1) {
+button span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -94,7 +92,7 @@ a span:nth-child(1) {
   }
 }
 
-a span:nth-child(2) {
+button span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -114,7 +112,7 @@ a span:nth-child(2) {
   }
 }
 
-a span:nth-child(3) {
+button span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -134,7 +132,7 @@ a span:nth-child(3) {
   }
 }
 
-a span:nth-child(4) {
+button span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -199,17 +197,17 @@ textarea {
   padding: 1em;
 }
 
-/* .contain {
+{.contain {
     max-width: 1170px;
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
-  } */
-/* @media (min-width: 600px) {
+  } 
+ @media (min-width: 600px) {
     .contain {
       padding: 0;
     }
-  } */
+  } 
 
 h3,
 ul {
@@ -229,6 +227,7 @@ button {
 }
 `}</style>
   </form>)
-    }
-}
-export default AddEditBookForm;
+    
+  }
+
+export default addBookForm;

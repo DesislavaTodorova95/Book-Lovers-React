@@ -8,7 +8,7 @@ import Footer from "./components/Footer/Footer";
 import RegisterPage from "./components/Register/RegisterPage";
 import CatalogPage from "./components/CatalogPage/CatalogPage";
 import Favourites from "./components/Favourites/Favourite";
-import AddBook from "./components/AddBook/AddBook";
+
 import BookDetails from "./components/BookDetails/BookDetails";
 import ErrorsContext from "./components/contexts/ErrorContext";
 import UserContext from "./components/contexts/UserContext";
@@ -16,6 +16,7 @@ import { useState } from "react";
 
 import ErrorComponent from "./components/ErrorComponent/ErrorComponenet";
 import EditBook from "./components/EditBook/EditBook";
+import AddBookForm from "./components/AddBookForm/AddBookForm";
 
 function App() {
   const [value, setValue] = useState(null);
@@ -42,7 +43,7 @@ function App() {
             <Route path="/auth/login" exact component={LoginPage} />
             <Route path="/auth/register" exact component={RegisterPage} />
             <Route path="/books/my-favourites" component={Favourites} />
-            <Route path="/books/add-book" component={AddBook} />
+            <Route path="/books/add-book" component={AddBookForm} />
             <Route path="/auth/logout" render={({history})=>{logoutHandle(); history.push('/')}} />
           </Switch>
         </ErrorsContext.Provider>

@@ -13,7 +13,7 @@ const  ErrorComponent=()=> {
  }
  useEffect(()=>{setTimeout(() => {
    setValue(null)
-  console.log(value)
+
  }, 6000);},[setValue, value])
  
  
