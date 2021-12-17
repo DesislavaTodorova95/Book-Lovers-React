@@ -5,10 +5,11 @@ import { useContext, useState, useEffect } from "react/cjs/react.development";
 import Comment from '../Comment/Comment'
 import bookServices from "../../services/bookServices";
 import ErrorsContext from "../contexts/ErrorContext";
+import UserContext from "../contexts/UserContext";
 const BookDetails = ({ match }) => {
   const { setValue } = useContext(ErrorsContext);
   const [book, setBook] = useState("");
-
+const {userInfo, setUserInfo} = useContext(UserContext);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -37,6 +38,7 @@ const BookDetails = ({ match }) => {
         <h1 className="book-title">
           <strong>{book.title}</strong>
         </h1>
+        <h6>{book.genre}</h6>
         <h3 className="description">{book.description}</h3>
         <div className="btns-div">
           <button className="btn likeBtn">Like</button>
@@ -47,10 +49,12 @@ const BookDetails = ({ match }) => {
             {book.likes ? Number(book.likes) : 0}
           </p>
         </div>
-        <Link to={`/books/edit/${match.params.bookId}`}>
-          <button className="btn">Edit</button>
-        </Link>
-        <Link to={`/books/delete/${book.bookId}`}>
+        {(userInfo && (userInfo.userId === book.addedBy) ) ?   <Link to={`/books/edit/${match.params.bookId}`} >    <button className="btn">Edit</button>
+        </Link> 
+: '' }
+       
+        
+        <Link to={`/books/delete/${match.params.bookId}`}>
           <button className="btn">Delete</button>
         </Link>
         <div className="SectionComments">

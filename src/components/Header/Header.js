@@ -6,41 +6,49 @@ import UserContext from "../contexts/UserContext";
 
 const Header = () => {
 const {userInfo, setUserInfo }= useContext(UserContext);
-const [user, setUser]= useState(null);
+const [user, setUser] = useState(null)
+
+if (!userInfo) {
+  localStorage.clear("sess-token");
+
+  
+}
 useEffect(()=>{
 setUser(userInfo)
-}, [userInfo])
+}, [userInfo]);
+console.log('userInfo', userInfo)
 const logout = ()=>{
 localStorage.clear();
 setUserInfo(null);
 }
+
   return (
     <div className="container">
       <img src={logo} className="logo" alt='bookImage'/>
       <nav>
         <ul>
           <li>
-            <Link className="nav-link" style={{display: user? 'block': "none"}} onClick={logout} to="/auth/logout">
+            <Link className="nav-link" style={{display: userInfo? 'block': "none"}} onClick={logout} to="/auth/logout">
               Logout
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: user? 'none': "block"}} to="/auth/register">
+            <Link className="nav-link" style={{display: userInfo? 'none': "block"}} to="/auth/register">
               Register
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: user? 'none': "block"}} to="/auth/login">
+            <Link className="nav-link" style={{display: userInfo? 'none': "block"}} to="/auth/login">
               Login
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: user? 'block': "none"}} to="/books/add-book">
+            <Link className="nav-link" style={{display: userInfo? 'block': "none"}} to="/books/add-book">
               Add Book
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: user? 'block': "none"}} to="/books/my-favourites">
+            <Link className="nav-link" style={{display: userInfo? 'block': "none"}} to="/books/my-favourites">
               My Favourites
             </Link>
           </li>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react/cjs/react.development";
 import UserContext from "../contexts/UserContext";
 const Book = ({_id,
-  title, author, description, imageUrl, likes, addedBy, comments,
+  title, author, genre, description, imageUrl, likes, addedBy, comments,
 })=>{
   const {userInfo, }= useContext(UserContext)
 return(
@@ -14,6 +14,7 @@ return(
   </div>     
  <div className='book-info'>
     <h1 className='book-title'><strong>{title}</strong></h1>
+    <h6>{genre}</h6>
        <h3 className="description">
       {description}</h3>
         <div className='btns-div'>

@@ -8,15 +8,13 @@ const RegisterPage = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePass, setRepass] = useState("");
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState(null);
+
   const { userInfo, setUserInfo } = useContext(UserContext);
 
   useEffect(() => {
     if (!userInfo) {
       localStorage.clear("sess-token");
-      setToken(null);
-      setUserId(null);
+     
       
     }
   }, [userInfo, history]);
@@ -36,9 +34,7 @@ const RegisterPage = ({ history }) => {
         config
       );
 
-      setUserId(data.userId);
-      setToken(data.token);
-      setUserInfo({ userId, token });
+      setUserInfo(JSON.stringify(data));
 
       localStorage.setItem("sess-token", data.token);
       localStorage.setItem("userId", data.userId);

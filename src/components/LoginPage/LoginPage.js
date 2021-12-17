@@ -9,6 +9,7 @@ const LoginPage =({history})=>{
   const [token, setToken] = useState(null);
   const [userId, setUserId] = useState(null);
   const { userInfo, setUserInfo } = useContext(UserContext);
+  const { setValue}= useContext(ErrorsContext)
   
   useEffect(() => { 
 
@@ -20,7 +21,7 @@ const LoginPage =({history})=>{
      
     }
   }, [userInfo, history]);
-  const { setValue } = useContext(ErrorsContext);
+  
   const onLoginSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -34,11 +35,11 @@ const LoginPage =({history})=>{
         "http://localhost:5000/auth/login",
         { email, password },
         config
-      );
+      ).catch((error)=>{setValue(error)});
 
-      setUserId(data.userId);
-      setToken(data.token);
-      setUserInfo({ userId, token });
+    
+      setUserInfo( JSON.stringify(data) );
+      console.log('login userInfo' , userInfo)
 
       localStorage.setItem("sess-token", data.token);
       localStorage.setItem("userId", data.userId);
