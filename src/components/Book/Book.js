@@ -14,9 +14,10 @@ return(
   </div>     
  <div className='book-info'>
     <h1 className='book-title'><strong>{title}</strong></h1>
-    <h6>{genre}</h6>
-       <h3 className="description">
-      {description}</h3>
+    <h6 className="genre">Genre: {genre}</h6>
+       <h3>
+      Desicription</h3>
+      <span className="description">{description}</span>
         <div className='btns-div'>
         
        {userInfo ? <button className="btn likeBtn">Like</button> : <p>Likes</p>} 
@@ -40,6 +41,11 @@ return(
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #FBEDD2;
 }
+.genre{
+  margin-top: 1px;
+  padding:1px;
+  font-size: 13px
+}
 .book-image{
   width: 200px;
   height: 260px;
@@ -57,6 +63,8 @@ return(
   padding-left: 25px;
 }
 .book-info {
+  position: relative;
+  display: inline-block;
   float: left;
   margin-left: 20px;
 }
@@ -76,6 +84,7 @@ return(
 }
 
 .book-title{
+  display: inline-block;
  font-family: 'Trattatello', fantasy;
 border-bottom: 1px solid #551a8b;
 }
@@ -87,9 +96,16 @@ border-bottom: 1px solid #551a8b;
   color: red;
 }
 .description{
+
+  display: inline-block;
+  width: 200px;
+  word-wrap: break-word;
+text-align: left;
+
   text-decoration: none;
   font-family:'Helvetica', sans-serif;
   font-size: 16px;
+  border-bottom: 1px solid #551a8b 
 }
 .likes-counter{text-align: center;}
 `}</style>

@@ -14,24 +14,36 @@ import axios from "axios";
   const [genre, setGenre] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [addedBy, setAddedBy] = useState('')
+
 const { setValue}= useContext(ErrorsContext)
   
     const onAddBookSubmit= async (e)=>{
 e.preventDefault()
+const id = JSON.parse(userInfo).userId
 
-setAddedBy(userInfo.userId);
-const book = { title, author, genre, description, imageUrl, addedBy}
-   const { data }= await axios.post("http://localhost:5000/books/create", {
+
+
+const book = { title, author, genre, description, imageUrl, id};
+
+  const bookAdded=  await axios.post("http://localhost:5000/books/create", {
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `${userInfo.token}`,
   },
-  body:
-    JSON.stringify(book)
-   , 
-}).catch((error)=> setValue(error));
-    console.log(data)}
+  body: book,
+  
+}
+
+ 
+ ).catch((error)=>{
+console.log(error);
+ setValue(error.response.data.message);
+console.log(error.response.data.message);}
+    )
+    if(bookAdded){
+      history.push('/')
+    }
+  }
 
 
         return ( <form id="addBookForm" onSubmit={onAddBookSubmit}>

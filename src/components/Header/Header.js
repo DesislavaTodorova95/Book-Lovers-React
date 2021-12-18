@@ -28,27 +28,27 @@ setUserInfo(null);
       <nav>
         <ul>
           <li>
-            <Link className="nav-link" style={{display: userInfo? 'block': "none"}} onClick={logout} to="/auth/logout">
+            <Link className="nav-link" style={{display: user? 'block': "none"}} onClick={logout} to="/auth/logout">
               Logout
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: userInfo? 'none': "block"}} to="/auth/register">
+            <Link className="nav-link" style={{display: user? 'none': "block"}} to="/auth/register">
               Register
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: userInfo? 'none': "block"}} to="/auth/login">
+            <Link className="nav-link" style={{display: user? 'none': "block"}} to="/auth/login">
               Login
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: userInfo? 'block': "none"}} to="/books/add-book">
+            <Link className="nav-link" style={{display: user? 'block': "none"}} to="/books/add-book">
               Add Book
             </Link>
           </li>
           <li>
-            <Link className="nav-link" style={{display: userInfo? 'block': "none"}} to="/books/my-favourites">
+            <Link className="nav-link" style={{display: user? 'block': "none"}} to="/books/my-favourites">
               My Favourites
             </Link>
           </li>

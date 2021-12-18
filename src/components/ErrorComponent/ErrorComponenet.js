@@ -28,8 +28,8 @@ const  ErrorComponent=()=> {
                 background-color: #ff6c37;
                 font-size: 12px;
                 color: white;
-                height: 30px;
-                width: 100px;
+                height: auto;
+                width: 200px;
                 left: 50px;
 
                 display: flex;

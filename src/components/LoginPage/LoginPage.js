@@ -20,7 +20,7 @@ const LoginPage =({history})=>{
       setUserId(null);
      
     }
-  }, [userInfo, history]);
+  }, [userInfo]);
   
   const onLoginSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +35,8 @@ const LoginPage =({history})=>{
         "http://localhost:5000/auth/login",
         { email, password },
         config
-      ).catch((error)=>{setValue(error)});
+      ).catch((error)=>{console.log(error);
+        setValue(error.response.data)});
 
     
       setUserInfo( JSON.stringify(data) );
@@ -46,10 +47,8 @@ const LoginPage =({history})=>{
       localStorage.setItem("email", data.email)
      
       history.push("/");
-    } catch (error) {
-      setValue(error.response.data);
-    }
-  };
+   
+  }catch(error){console.log(error)};}
 
         return (
           <div className="login-box">
