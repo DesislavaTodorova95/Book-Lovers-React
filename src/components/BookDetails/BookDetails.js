@@ -6,7 +6,8 @@ import Comment from '../Comment/Comment'
 import bookServices from "../../services/bookServices";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
-const BookDetails = ({ match }) => {
+import axios from "axios";
+const BookDetails = ({ match, history }) => {
   const { setValue } = useContext(ErrorsContext);
   const [book, setBook] = useState("");
 const {userInfo, setUserInfo} = useContext(UserContext);
@@ -52,10 +53,12 @@ const {userInfo, setUserInfo} = useContext(UserContext);
         {(userInfo && (userInfo.userId === book.addedBy) ) ?   <Link to={`/books/edit/${match.params.bookId}`} >    <button className="btn">Edit</button>
         </Link> 
 : '' }
-       
-        
+       {/* (e)=>{e.preventDefault();
+        const deleted= bookServices.deleteBook(match.params.bookId).then(data => console.log(data)).catch(error=> setValue(error));
+        if(deleted){history.push('/')}} */}
+       {/*  */}
         <Link to={`/books/delete/${match.params.bookId}`}>
-          <button className="btn">Delete</button>
+          <button className="btn" >Delete</button>
         </Link>
         <div className="SectionComments">
           <h1 id="commentsHeader">Comments</h1>

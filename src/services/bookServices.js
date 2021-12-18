@@ -6,7 +6,9 @@ const getOne=(id) => {
       .catch((error) =>console.log(error));
   }; 
 
+
 const bookServices = {
-    getOne
+    getOne,
+    
 }
 export default bookServices

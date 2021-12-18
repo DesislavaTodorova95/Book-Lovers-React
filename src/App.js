@@ -17,11 +17,13 @@ import { useState } from "react";
 import ErrorComponent from "./components/ErrorComponent/ErrorComponenet";
 import EditBook from "./components/EditBook/EditBook";
 import AddBookForm from "./components/AddBookForm/AddBookForm";
+import axios from "axios";
+import baseUrl from "./services/api";
 
 function App() {
   const [value, setValue] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
-
+ 
   const logoutHandle = () => {
     localStorage.clear();
     setUserInfo(null);
@@ -45,6 +47,10 @@ function App() {
             <Route path="/books/my-favourites" component={Favourites} />
             <Route path="/books/add-book" component={AddBookForm} />
             <Route path="/auth/logout" render={({history})=>{logoutHandle(); history.push('/')}} />
+           <Route path='/books/delete/:bookId' render={({history, match})=>{
+             axios.get(`${baseUrl}/books/delete/${match.params.bookId}`).then(data => console.log(data) ).catch(error=> setValue(error));
+             history.push('/');
+           }} />
           </Switch>
         </ErrorsContext.Provider>
         <Footer />
