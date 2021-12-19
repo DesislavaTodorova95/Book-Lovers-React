@@ -6,7 +6,7 @@ import Comment from '../Comment/Comment'
 import bookServices from "../../services/bookServices";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
-import axios from "axios";
+
 const BookDetails = ({ match, history }) => {
   const { setValue } = useContext(ErrorsContext);
   const [book, setBook] = useState("");
@@ -15,13 +15,15 @@ const {userInfo, setUserInfo} = useContext(UserContext);
 
   useEffect(() => {
     bookServices.getOne(match.params.bookId).then((res) => setBook(res));
-  }, [match.params.bookId]);
+    
 
+  }, [match.params.bookId]);
+console.log('book', book)
   if (error) {
     setValue(error);
     setError(null);
   }
-
+ 
   return (
     <div className="book">
       <div className="imgSection">
@@ -50,13 +52,10 @@ const {userInfo, setUserInfo} = useContext(UserContext);
             {book.likes ? Number(book.likes) : 0}
           </p>
         </div>
-        {(userInfo && (userInfo.userId === book.addedBy) ) ?   <Link to={`/books/edit/${match.params.bookId}`} >    <button className="btn">Edit</button>
+        {(userInfo && (JSON.parse(userInfo).userId === book.addedBy) ) ?   <Link to={`/books/edit/${match.params.bookId}`} >    <button className="btn">Edit</button>
         </Link> 
 : '' }
-       {/* (e)=>{e.preventDefault();
-        const deleted= bookServices.deleteBook(match.params.bookId).then(data => console.log(data)).catch(error=> setValue(error));
-        if(deleted){history.push('/')}} */}
-       {/*  */}
+    
         <Link to={`/books/delete/${match.params.bookId}`}>
           <button className="btn" >Delete</button>
         </Link>

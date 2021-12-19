@@ -1,86 +1,109 @@
-import { useContext, useState } from "react/cjs/react.development"
+import { useContext, useState } from "react/cjs/react.development";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
 
- const AddBookForm = ({history})=>{
-  
-   const {userInfo, setUserInfo }= useContext(UserContext)
-   if(!userInfo){
-     history.push('/')
-   }
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [genre, setGenre] = useState('');
-  const [description, setDescription] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-
-const { setValue}= useContext(ErrorsContext)
-  
-    const onAddBookSubmit= async (e)=>{
-e.preventDefault()
-const id = JSON.parse(userInfo).userId
-
-
-
-const book = { title, author, genre, description, imageUrl, id};
-
-  const bookAdded=  await axios.post("http://localhost:5000/books/create", {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `${userInfo.token}`,
-  },
-  body: book,
-  
-}
-
- 
- ).catch((error)=>{
-console.log(error);
- setValue(error.response.data.message);
-console.log(error.response.data.message);}
-    )
-    if(bookAdded){
-      history.push('/')
-    }
+const AddBookForm = ({ history }) => {
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  if (!userInfo) {
+    history.push("/");
   }
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [genre, setGenre] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
+  const { setValue } = useContext(ErrorsContext);
 
-        return ( <form id="addBookForm" onSubmit={onAddBookSubmit}>
-            <div className="book-box">
-               
-                  <p>
-                    <label htmlFor="title">Book Title</label>
-                    <input name="title" type="text" onChange={(e)=>{setTitle(e.target.value)}}/>
-                  </p>
-                  <p>
-                    <label htmlFor="author">Book Author</label>
-                    <input type="text" onChange={(e)=>{setAuthor(e.target.value)}} />
-                  </p>
-                  
-                  <p>
-                    <label htmlFor="genre">Book Genre</label>
-                    <input name='genre' type="text"  onChange={(e)=>{setGenre(e.target.value)}}/>
-                  </p>
-                  <p>
-                    <label htmlFor="imageUrl">Book Image</label>
-                    <input name='imageUrl' type="text" onChange={(e)=>{setImageUrl(e.target.value)}}/>
-                  </p>
-                  <p>
-                    <label htmlFor="description">Book Description</label>
-                    <textarea name="description"  cols="30" rows="7" onChange={(e)=>{setDescription(e.target.value)}}></textarea>
-                  </p>
-                  <button type="submit" form="addBookForm" className="btnSubmit">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    Submit
-                 </button>
-  
-                  </div>
-     
-  <style jsx>{`
+  const onAddBookSubmit = async (e) => {
+    e.preventDefault();
+    const addedBy = JSON.parse(userInfo).userId;
+
+    const book = { title, author, genre, description, imageUrl, addedBy };
+
+    const bookAdded = await axios
+      .post("http://localhost:5000/books/create", {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${JSON.parse(userInfo).token}`,
+        },
+        body: book,
+      })
+      .catch((error) => {
+        console.log(error);
+        setValue(error.response.data.message);
+        console.log(error.response.data.message);
+      });
+    if (bookAdded) {
+      history.push("/");
+    }
+  };
+
+  return (
+    <form id="addBookForm" onSubmit={onAddBookSubmit}>
+      <div className="book-box">
+        <p>
+          <label htmlFor="title">Book Title</label>
+          <input
+            name="title"
+            type="text"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <label htmlFor="author">Book Author</label>
+          <input
+            type="text"
+            onChange={(e) => {
+              setAuthor(e.target.value);
+            }}
+          />
+        </p>
+
+        <p>
+          <label htmlFor="genre">Book Genre</label>
+          <input
+            name="genre"
+            type="text"
+            onChange={(e) => {
+              setGenre(e.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <label htmlFor="imageUrl">Book Image</label>
+          <input
+            name="imageUrl"
+            type="text"
+            onChange={(e) => {
+              setImageUrl(e.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <label htmlFor="description">Book Description</label>
+          <textarea
+            name="description"
+            cols="30"
+            rows="7"
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          ></textarea>
+        </p>
+        <button type="submit" form="addBookForm" className="btnSubmit">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </button>
+      </div>
+
+      <style jsx>{`
        
 .book-box {
   color: #551a8b;
@@ -269,8 +292,8 @@ button {
   border: 3px solid #551a8b;
 }
 `}</style>
-  </form>)
-    
-  }
+    </form>
+  );
+};
 
 export default AddBookForm;
