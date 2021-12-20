@@ -11,12 +11,11 @@ const CatalogPage = () => {
       .then((res) => res.json())
       .then((result) => setBooks(result));
   }, []);
-
   
   return (
     <div className="book-list">
       <h1 className="catalog-head">All Books</h1>
-      {books.sort((a, b)=> {return a.title.localeCompare(b.title)}).map((book)=><Book key={book._id} {...book} />)}
+       {(books.length<0 ) ?<p className="LackOfBookS">There are no added books yet</p> : books.sort((a, b)=> {return a.title.localeCompare(b.title)}).map((book)=><Book key={book._id} {...book} />)  }
         <style jsx>{`
         .catalog-head {
           text-transform: capitalize;
@@ -31,8 +30,17 @@ const CatalogPage = () => {
         .book-list {
           display: block;
         }
+        .LackOfBookS{
+          text-transform: capitalize;
+          font-family: "Brush Script MT", cursive;
+          text-align: center;
+          font-size: 30px;
+          font-style: bold;
+          color: #fbedd2;
+        }
       `}</style>
     </div>
   );
 };
+  
 export default CatalogPage;

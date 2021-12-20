@@ -31,9 +31,13 @@ const AddBookForm = ({ history }) => {
         body: book,
       })
       .catch((error) => {
-        console.log(error);
-        setValue(error.response.data.message);
-        console.log(error.response.data.message);
+       
+        if(error.response.data.message){
+        setValue(error.response.data.message);}else {
+          console.log(error);
+          setValue(error.response.datamessage)
+        }
+        
       });
     if (bookAdded) {
       history.push("/");

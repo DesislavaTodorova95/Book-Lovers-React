@@ -1,66 +1,99 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react/cjs/react.development";
+import baseUrl from "../../services/api";
+import bookServices from "../../services/bookServices";
+import UserContext from "../contexts/UserContext";
 
+const EditBook = ({ match, history }) => {
+  const { userInfo, setUserInfo } = useContext(UserContext);
+  const [book, setBook] = useState("");
 
-const EditBook=({match})=>{
- const onEditSubmitHandler= ()=>{
+  const [token, setToken] = useState("");
+  
+  useEffect(() => {
+    bookServices
+      .getOne(match.params.bookId)
+      .then((res) => setBook(res))
+      .catch((error) => console.log(error));
+  }, [match.params.bookId]);
+  
+  const onEditSubmitHandler =async (e) => {
+   
+    e.preventDefault();
+    if (!userInfo) {
+      history.push("/");
+    }
+    try{
+    const accessToken =JSON.parse(userInfo).token;
+    setToken(accessToken);
+    console.log(accessToken);
+    const bookId = match.params.bookId;
+    const updatedBook = {
+      ...book,
+      title: e.target.title.value,
+      author: e.target.author.value,
+      genre: e.target.genre.value,
+      imageUrl: e.target.imageUrl.value,
+      description: e.target.description.value,
+    };
+const config = {method:"PUT",
+ 
 
- };
-return ( <form id="editBookForm" onSubmit={onEditSubmitHandler}>
-    <div className="book-box">
-       
-          <p className="inputItem">
-            <label htmlFor="">Book Title</label>
-            <input type="text"/>
-          </p>
-          <p className="inputItem">
-            <label htmlFor="">Book Author</label>
-            <input type="text"/>
-          </p>
-          
-          <p className="inputItem">
-            <label htmlFor="">Book Genre</label>
-            <input type="text"/>
-          </p>
-          <p className="inputItem">
-            <label htmlFor="">Book Image</label>
-            <input type="text"/>
-          </p>
-          <p className="inputItem">
-            <label htmlFor="">Book Description</label>
-            <textarea name="" id="" cols="30" rows="7"></textarea>
-          </p>
-          <button type="submit" form="editBookForm" className="btnSubmit">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            Submit
-         </button>
+};
+const suxess = await axios.post(`${baseUrl}/books/edit/${bookId}`, { headers:  {'Content-Type': 'application/json',
+'Authorization': `Bearer ${JSON.parse(userInfo).token}`}, body: updatedBook}).catch(error=>{console.log(error)});
+  }catch(error) {console.log(error)};
+}
+  return (
+    <form id="editBookForm" onSubmit={onEditSubmitHandler}>
+      <div className="book-box">
+        <p>
+          <label htmlFor="title">Book Title</label>
+          <input name="title" type="text" defaultValue={book.title} />
+        </p>
+        <p>
+          <label htmlFor="author">Book Author</label>
+          <input name="author" type="text" defaultValue={book.author} />
+        </p>
 
-          </div>
+        <p>
+          <label htmlFor="genre">Book Genre</label>
+          <input name="genre" type="text" defaultValue={book.genre} />
+        </p>
+        <p>
+          <label htmlFor="imageUrl">Book Image</label>
+          <input name="imageUrl" type="text" defaultValue={book.imageUrl} />
+        </p>
+        <p>
+          <label htmlFor="description">Book Description</label>
+          <textarea
+            name="description"
+            cols="30"
+            rows="7"
+            defaultValue={book.description}
+          ></textarea>
+        </p>
+        <button type="submit" form="editBookForm" className="btnSubmit">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </button>
+      </div>
 
-<style jsx>{`
-
+      <style jsx>{`
+ 
 .book-box {
-    background-color: 
 color: #551a8b;
-display: block;
-border: 4px solid #551a8b;
-border-radius:2px;
 }
 
-.inputItem{
-    display: flex;
-    position: relative;
-    width 40px;
-    height 12px; 
-
-}
 #editBookForm .book-box {
 position: relative;
 }
 form button {
 position: relative;
-display: inline;
+display: inline-block;
 padding: 10px 20px;
 color: #551a8b;
 font-size: 16px;
@@ -209,13 +242,13 @@ textarea {
 padding: 1em;
 }
 
-.contain {
+{.contain {
 max-width: 1170px;
 margin-left: auto;
 margin-right: auto;
 padding: 1em;
 } 
- @media (min-width: 600px) {
+@media (min-width: 600px) {
 .contain {
 padding: 0;
 }
@@ -231,17 +264,15 @@ textarea:focus {
 outline: 3px solid #8e66b1;
 }
 
- 
 input,
 textarea,
 button {
-
+width: 100%;
 border: 3px solid #551a8b;
 }
 `}</style>
-</form>)
-
-}
-
+    </form>
+  );
+};
 
 export default EditBook;

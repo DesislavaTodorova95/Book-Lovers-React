@@ -23,7 +23,9 @@ console.log('book', book)
     setValue(error);
     setError(null);
   }
- 
+ console.log(JSON.parse(userInfo).userId === book.addedBy);
+ console.log(JSON.parse(userInfo).userId);
+ console.log(book.addedBy)
   return (
     <div className="book">
       <div className="imgSection">
@@ -52,13 +54,17 @@ console.log('book', book)
             {book.likes ? Number(book.likes) : 0}
           </p>
         </div>
-        {(userInfo && (JSON.parse(userInfo).userId === book.addedBy) ) ?   <Link to={`/books/edit/${match.params.bookId}`} >    <button className="btn">Edit</button>
+        {(userInfo && (JSON.parse(userInfo).userId === book.addedBy) ) ? <Link to={`/books/edit/${match.params.bookId}`}>    
+        <button className="btn">Edit</button>
         </Link> 
-: '' }
-    
-        <Link to={`/books/delete/${match.params.bookId}`}>
+          : '' }
+           {(userInfo && (JSON.parse(userInfo).userId === book.addedBy) ) ? <Link to={`/books/delete/${match.params.bookId}`}>
           <button className="btn" >Delete</button>
         </Link>
+          : '' }
+           
+    
+      
         <div className="SectionComments">
           <h1 id="commentsHeader">Comments</h1>
           <Link to="/">

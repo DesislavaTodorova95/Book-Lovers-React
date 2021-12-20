@@ -12,9 +12,7 @@ return(
 </p>
 <br />
 <div id="commentsBtnsSection">
-  <Link to="/">
-    <button className="btn">Edit Comment</button>
-  </Link>
+  
   <Link to="/">
     <button className="btn">Delete Comment</button>
   </Link>
