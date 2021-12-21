@@ -20,8 +20,8 @@ return(
       <span className="description">{description}</span>
         <div className='btns-div'>
         
-       {userInfo ? <button className="btn likeBtn">Like</button> : <p>Likes</p>} 
-          <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{likes? Number(likes): 0}</p></div>
+       <p>Likes</p>
+          <p className="likes-counter"><i className="material-icons"><FaHeart /></i>{likes && likes.length >0? Number(likes.length): 0}</p></div>
          <Link to={`/books/details/${_id}`}>
          <button className='btn'>Details</button>
   </Link>
