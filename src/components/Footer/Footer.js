@@ -6,10 +6,13 @@ const Footer = () => {
       <p className="footer">&copy; 2021</p>
       <style jsx>{`
         .footer {
-   position:absolute;
+   position:fixed;
    text-align: center;
    bottom:0;
    width:100%;
+   margin-bottom:0;
+   background-color: #F5CB79;
+   border-top:3px solid #551A8B;
    
    
    color: black;

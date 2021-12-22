@@ -14,23 +14,30 @@ const CatalogPage = () => {
   
   return (
     <div className="book-list">
-      <h1 className="catalog-head">All Books</h1>
-       {(books.length<0 ) ?<p className="LackOfBookS">There are no added books yet</p> : books.sort((a, b)=> {return a.title.localeCompare(b.title)}).map((book)=><Book key={book._id} {...book} />)  }
+    <h1 className="catalog-head">{books.length< 1 ? 'There are no books yet..' : 'All Books'}</h1>
+       {books.sort((a, b)=> {return a.title.localeCompare(b.title)}).map((book)=><Book key={book._id} {...book} />)  }
         <style jsx>{`
+          .book-list{
+            display: block;
+            margin-top: 100px;
+          }
         .catalog-head {
+          margin-top:100px;
+        
           text-transform: capitalize;
           width: 100%;
+          position: absolute;
           border-bottom: 4px ridge #551a8b;
-          background-color: #fbedd2;
+          background-color: #FBEDD2;
           margin-top: 0;
           padding-left: 30px;
-          color: #551a8b;
+          color: #551A8B;
           font-family: "Brush Script MT", cursive;
         }
-        .book-list {
-          display: block;
-        }
+       
         .LackOfBookS{
+          display: block;
+            margin-top: 100px;
           text-transform: capitalize;
           font-family: "Brush Script MT", cursive;
           text-align: center;

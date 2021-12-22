@@ -46,7 +46,9 @@ const AddBookForm = ({ history }) => {
 
   return (
     <form id="addBookForm" onSubmit={onAddBookSubmit}>
+     
       <div className="book-box">
+      <h1 className="addHead">Add Book</h1>
         <p>
           <label htmlFor="title">Book Title</label>
           <input
@@ -93,6 +95,7 @@ const AddBookForm = ({ history }) => {
             name="description"
             cols="30"
             rows="7"
+            className="description"
             onChange={(e) => {
               setDescription(e.target.value);
             }}
@@ -108,13 +111,30 @@ const AddBookForm = ({ history }) => {
       </div>
 
       <style jsx>{`
-       
+   .addHead{
+     color: #8E66B1;
+     text-align: center;
+   }    
 .book-box {
-  color: #551a8b;
+  color: #8E66B1;
+width: 450px;
+height: 600px;
+background-color: black;
+position: absolute;
+text-align: center;
+top: 150px;
+left: 300px;
+border: 2px solid black;
+  border-radius: 10px;
 }
 
-#addBookForm .book-box {
-  position: relative;
+.description{
+  background-color: black;
+  color: #8E66B1;
+}
+.description:focus {
+  background-color: white;
+  color: black;
 }
 form button {
   position: relative;
@@ -128,6 +148,8 @@ form button {
   transition: 0.5s;
   margin-top: 40px;
   letter-spacing: 4px;
+  background-color: black;
+ 
 }
 
 form button:hover {
@@ -151,7 +173,12 @@ button span:nth-child(1) {
   background: linear-gradient(90deg, transparent, #551a8b);
   animation: btn-anim1 1s linear infinite;
 }
-
+input{background-color: black;
+color: #8E66B1; }
+input:focus {
+  background-color: white;
+  color: black;
+}
 @keyframes btn-anim1 {
   0% {
     left: -100%;

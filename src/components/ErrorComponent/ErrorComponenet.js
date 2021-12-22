@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import errorIcon from './static/error.png'
 import { useEffect } from "react/cjs/react.development";
 import ErrorsContext from "../contexts/ErrorContext";
 
@@ -9,7 +10,7 @@ const  ErrorComponent=()=> {
  if (value && value.length > 1){
  
    Object.values(value).map((x)=> valueList.push(x) );
-   valueList = valueList.join(' ')
+   valueList = valueList.join('')
  }
  useEffect(()=>{setTimeout(() => {
    setValue(null)
@@ -19,30 +20,43 @@ const  ErrorComponent=()=> {
  
      return( 
       <article id="errorArticle" style={{display: value ? 'inline' : "none"}}>
-        <div className="alert">
-            <p className="errorParag">{valueList || value}</p>
+        <div>
+            <span className="errorSpan">
+              <span className="errorImg"><img  src={errorIcon} alt="ErrorIcon"></img></span>
+              <p className="errorText">{valueList || value}</p>
+              </span>
             <style jsx>{`
-              .errorParag {
-                margin: 2px;
+              .errorSpan {
+
+                margin: 120px 2px 2px 2px;
                 padding: 2px;
-                background-color: #ff6c37;
-                font-size: 12px;
-                color: white;
-                height: auto;
-                width: 200px;
+                background-color: #FBEDD2;
+                font-size: 20px;
+                color: #551A8B;
+                height: 150px;
+                width: 300px;
                 left: 50px;
 
                 display: flex;
 
                 text-align: center;
-                border: 3px solid #eb2224;
+                border: 5px solid #FF0000;
                 border-radius: 3px;
-              }
-              ,
-              .errorParag {
+              },
+              .errorText{margin:10px},
+              .errorImg{
+                float: left;
+                height: 50px;
+                width: 50px;
+                margin-top:1px;
+                margin-left: 1px;
+              },
+              
+              .errorSpan {
                 background-color: #eb2224;
                 border: 3px solid black;
                 border-radius: 2px;
+                font-family:'Helvetica', sans-serif;
               }
              
             `}</style>

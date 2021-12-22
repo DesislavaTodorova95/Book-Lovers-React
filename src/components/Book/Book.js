@@ -1,13 +1,14 @@
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useContext } from "react/cjs/react.development";
+import { useContext, useState } from "react/cjs/react.development";
 import UserContext from "../contexts/UserContext";
 const Book = ({_id,
   title, author, genre, description, imageUrl, likes, addedBy, comments,
 })=>{
   const {userInfo, }= useContext(UserContext)
+  const [showMore, setShowMore] = useState(false);
 return(
-<div className="book">
+<div className={showMore ? 'book book-flex': 'book'}>
   <div className="imgSection">
         <img className="book-image" src={imageUrl} alt="Harry Potter 1st book Cover"/>
         <p className="author"> <small>{author}</small></p>
@@ -17,7 +18,9 @@ return(
     <h6 className="genre">Genre: {genre}</h6>
        <h3>
       Desicription</h3>
-      <span className="description">{description}</span>
+      <span className="description">
+        <p>{showMore ? description : `${description.substring(0, 100)}`}</p>
+        <button className="btn" onClick={()=>{setShowMore(!showMore)}}>{!showMore ? 'More': 'Less'}</button></span>
         <div className='btns-div'>
         
        <p>Likes</p>
@@ -31,15 +34,20 @@ return(
    
  
 <style jsx>{`.book {
-  width: 45%;
-  height: auto;
+
+  width: 48%;
+ position:relative;
+  height:500px;
   display: flex;
   float: left;
   border: 4px solid #551a8b;
-  margin: 10px;
+  margin: 45px 10px 10px 10px;
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background-color: #FBEDD2;
+}
+.book-flex{
+  height: auto;
 }
 .genre{
   margin-top: 1px;
@@ -100,7 +108,7 @@ border-bottom: 1px solid #551a8b;
   display: inline-block;
   width: 200px;
   word-wrap: break-word;
-text-align: left;
+  text-align: left;
 
   text-decoration: none;
   font-family:'Helvetica', sans-serif;

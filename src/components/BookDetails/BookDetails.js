@@ -120,12 +120,13 @@ if(usersLiked){
       </div>
       <style jsx>{`
         .book {
+          
           width: 90%;
           height: auto;
           display: flex;
           float: left;
           border: 4px solid #551a8b;
-          margin: 10px;
+          margin: 110px 10px 10px 10px;
           border-radius: 12px;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           background-color: #fbedd2;

@@ -6,9 +6,9 @@ const Comment = ()=>{
 
 return(
      <div className="comment">
-<h3>By: </h3>
+<h3>By: Someone</h3>
 <p>
-  3 srfsdfsesflfsfadf loremipsnfkasnakfnkalfnlaknflfnalfnlafn;alflf
+  This is an amazing book. I love it...
 </p>
 <br />
 <div id="commentsBtnsSection">
@@ -20,7 +20,7 @@ return(
 <p className="addedAt">
   <small><bold>addedAt</bold></small>
   <br />
-  <small>12920222</small>
+  <small>10.12.21</small>
 </p>
 </div>
 
