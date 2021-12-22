@@ -27,11 +27,11 @@ const CatalogPage = () => {
           text-transform: capitalize;
           width: 100%;
           position: absolute;
-          border-bottom: 4px ridge #551a8b;
-          background-color: #FBEDD2;
+          border-bottom: 4px ridge #3D1C0B;
+          background-color: #FFE4C4;
           margin-top: 0;
           padding-left: 30px;
-          color: #551A8B;
+          color: #3D1C0B;
           font-family: "Brush Script MT", cursive;
         }
        
@@ -43,7 +43,7 @@ const CatalogPage = () => {
           text-align: center;
           font-size: 30px;
           font-style: bold;
-          color: #fbedd2;
+          color: #FFE4C4;
         }
       `}</style>
     </div>

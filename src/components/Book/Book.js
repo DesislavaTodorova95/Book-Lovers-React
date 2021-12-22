@@ -40,11 +40,11 @@ return(
   height:510px;
   display: flex;
   float: left;
-  border: 4px solid #551a8b;
+  border: 4px solid #3D1C0B;
   margin: 45px 10px 10px 10px;
   border-radius: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: #FBEDD2;
+  background-color: #FFE4C4;
 }
 .book-flex{
   height: auto;
@@ -59,7 +59,7 @@ return(
   height: 260px;
   padding: 4px;
   display: block;
-  border-right: 3px solid #551a8b;
+  border-right: 3px solid #3D1C0B;
 }
 
 
@@ -81,20 +81,20 @@ return(
   height: 40px;
   
   margin: 10px 5px;
-  border: 2px solid #551a8b;
+  border: 2px solid #3D1C0B;
   border-radius: 3px;
-  background-color: #551a8b;
-  color: #FBEDD2;
+  background-color: #3D1C0B;
+  color: #FFE4C4;
 }
 .btn:hover{
- background-color: #FBEDD2;
- color: #551a8b;
+ background-color: #FFE4C4;
+ color: #3D1C0B;
 }
 
 .book-title{
   display: inline-block;
  font-family: 'Trattatello', fantasy;
-border-bottom: 1px solid #551a8b;
+border-bottom: 1px solid #3D1C0B;
 }
 .btns-div{
   display: flex;
@@ -113,7 +113,7 @@ border-bottom: 1px solid #551a8b;
   text-decoration: none;
   font-family:'Helvetica', sans-serif;
   font-size: 16px;
-  border-bottom: 1px solid #551a8b 
+  border-bottom: 1px solid #3D1C0B 
 }
 .likes-counter{text-align: center;}
 `}</style>

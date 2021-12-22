@@ -115,7 +115,7 @@ const RegisterPage = ({ history }) => {
         .register-box h2 {
           margin: 0 0 30px;
           padding: 0;
-          color: #551a8b;
+          color: #F5CB79;
           text-align: center;
         }
 
@@ -149,7 +149,7 @@ const RegisterPage = ({ history }) => {
         .register-box .user-box input:valid ~ label {
           top: -20px;
           left: 0;
-          color: #551a8b;
+          color: #F5CB79;
           font-size: 12px;
         }
 
@@ -157,7 +157,7 @@ const RegisterPage = ({ history }) => {
           position: relative;
           display: inline-block;
           padding: 10px 20px;
-          color: #551a8b;
+          color: #F5CB79;
           font-size: 16px;
           text-decoration: none;
           text-transform: uppercase;
@@ -168,11 +168,11 @@ const RegisterPage = ({ history }) => {
         }
 
         .register-box button:hover {
-          background: #ac76df;
+          background: #F5CB79;
           color: #fff;
           border-radius: 5px;
-          box-shadow: 0 0 5px #551a8b, 0 0 25px #551a8b, 0 0 50px #551a8b,
-            0 0 100px #551a8b;
+          box-shadow: 0 0 5px #F5CB79, 0 0 25px #F5CB79, 0 0 50px #F5CB79,
+            0 0 100px #F5CB79;
         }
 
         .register-box button span {
@@ -185,7 +185,7 @@ const RegisterPage = ({ history }) => {
           left: -100%;
           width: 100%;
           height: 2px;
-          background: linear-gradient(90deg, transparent, #551a8b);
+          background: linear-gradient(90deg, transparent, #F5CB79);
           animation: btn-anim1 1s linear infinite;
         }
 
@@ -204,7 +204,7 @@ const RegisterPage = ({ history }) => {
           right: 0;
           width: 2px;
           height: 100%;
-          background: linear-gradient(180deg, transparent, #551a8b);
+          background: linear-gradient(180deg, transparent, #F5CB79);
           animation: btn-anim2 1s linear infinite;
           animation-delay: 0.25s;
         }
@@ -224,7 +224,7 @@ const RegisterPage = ({ history }) => {
           right: -100%;
           width: 100%;
           height: 2px;
-          background: linear-gradient(270deg, transparent, #551a8b);
+          background: linear-gradient(270deg, transparent, #F5CB79);
           animation: btn-anim3 1s linear infinite;
           animation-delay: 0.5s;
         }
@@ -244,7 +244,7 @@ const RegisterPage = ({ history }) => {
           left: 0;
           width: 2px;
           height: 100%;
-          background: linear-gradient(360deg, transparent, #551a8b);
+          background: linear-gradient(360deg, transparent, #F5CB79);
           animation: btn-anim4 1s linear infinite;
           animation-delay: 0.75s;
         }

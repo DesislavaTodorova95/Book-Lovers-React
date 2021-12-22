@@ -109,7 +109,7 @@ const EditBook = ({ match, history }) => {
       <style jsx>{`
  
 .editBookForm{
-  background-color:white;
+  background-color: #F5CB79;
           width:100%;
         height: 100%;
         }
@@ -124,14 +124,14 @@ const EditBook = ({ match, history }) => {
         right:0;
         height:650px;
         width: 500px;
-        border-left: 4px solid #551A8B;
+        border-left: 4px solid #F5CB79;
       }
    .editHead{
-     color: #8E66B1;
+     color: #F5CB79;
      text-align: center;
    }    
 .book-box {
-  color: #8E66B1;
+  color: #B26F3F;
 width: 450px;
 height: 600px;
 background-color: black;
@@ -145,17 +145,17 @@ border: 2px solid black;
 
 .description{
   background-color: black;
-  color: #8E66B1;
+  color: #B26F3F;
 }
 .description:focus {
-  background-color: white;
+  background-color: #F5CB79;
   color: black;
 }
 form button {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
-  color: #551a8b;
+  color: #F5CB79;
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
@@ -168,11 +168,11 @@ form button {
 }
 
 form button:hover {
-  background: #ac76df;
+  background: #F5CB79;
   color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 5px #551a8b, 0 0 25px #551a8b, 0 0 50px #551a8b,
-    0 0 100px #551a8b;
+  box-shadow: 0 0 5px #F5CB79, 0 0 25px #F5CB79, 0 0 50px #F5CB79,
+    0 0 100px #F5CB79;
 }
 
 button span {
@@ -185,15 +185,15 @@ button span:nth-child(1) {
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #551a8b);
+  background: linear-gradient(90deg, transparent, #F5CB79);
   animation: btn-anim1 1s linear infinite;
 }
 input{
   background-color: black;
-color: #8E66B1; 
+color: #B26F3F; 
 }
 input:focus {
-  background-color: white;
+  background-color: #F5CB79;
   color: black;
 }
 @keyframes btn-anim1 {
@@ -211,7 +211,7 @@ button span:nth-child(2) {
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #551a8b);
+  background: linear-gradient(180deg, transparent, #F5CB79);
   animation: btn-anim2 1s linear infinite;
   animation-delay: 0.25s;
 }
@@ -231,7 +231,7 @@ button span:nth-child(3) {
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, #551a8b);
+  background: linear-gradient(270deg, transparent, #F5CB79);
   animation: btn-anim3 1s linear infinite;
   animation-delay: 0.5s;
 }
@@ -251,7 +251,7 @@ button span:nth-child(4) {
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #551a8b);
+  background: linear-gradient(360deg, transparent, #F5CB79);
   animation: btn-anim4 1s linear infinite;
   animation-delay: 0.75s;
 }
@@ -335,14 +335,14 @@ ul {
 }
 input:focus,
 textarea:focus {
-  outline: 3px solid #8e66b1;
+  outline: 3px solid #B26F3F;
 }
 
 input,
 textarea,
 button {
   width: 100%;
-  border: 3px solid #551a8b;
+  border: 3px solid #B26F3F;
 }
 `}</style>
     </>

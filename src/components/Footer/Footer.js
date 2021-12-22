@@ -12,7 +12,7 @@ const Footer = () => {
    width:100%;
    margin-bottom:0;
    background-color: #F5CB79;
-   border-top:3px solid #551A8B;
+   border-top:3px solid #3D1C0B;
    
    
    color: black;

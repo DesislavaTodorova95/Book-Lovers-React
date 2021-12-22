@@ -48,12 +48,15 @@ width: 100%;
               padding: 10px
               margin 30px
           }
+          .HomeWrapper a:hover{
+            color: #A1033D;
+          }
           .HomeWrapper a{
             text-align: center;
 width: 100px;
-background-color: #FBEDD2;
+background-color: #FFE4C4;
 height: 50px;
-border: 3px solid #551A8B;
+border: 3px solid #3D1C0B;
 border-radius: 4px;
 margin-top: 30px;
 padding-top: 3px;
@@ -62,6 +65,7 @@ font-family: "Brush Script MT", cursive;
 padding-top: 8px;
 font-size: 27px;
 display: inline-block;
+color: #3D1C0B;
           }
         `}</style>
      </>

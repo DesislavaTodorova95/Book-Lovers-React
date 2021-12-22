@@ -91,7 +91,7 @@ const LoginPage =({history})=>{
   .login-box h2 {
     margin: 0 0 30px;
     padding: 0;
-    color: #551A8B;
+    color: #F5CB79;
     text-align: center;
   }
   
@@ -125,7 +125,7 @@ const LoginPage =({history})=>{
   .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #551A8B;
+    color: #F5CB79;
     font-size: 12px;
   }
   
@@ -133,7 +133,7 @@ const LoginPage =({history})=>{
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: #551A8B;
+    color: #F5CB79;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -144,13 +144,13 @@ const LoginPage =({history})=>{
   }
  
   .login-box .btnSubmit:hover {
-    background: #ac76df;
+    background: #F5CB79;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #551A8B,
-                0 0 25px #551A8B,
-                0 0 50px #551A8B,
-                0 0 100px #551A8B;
+    box-shadow: 0 0 5px #F5CB79,
+                0 0 25px #F5CB79,
+                0 0 50px #F5CB79,
+                0 0 100px #F5CB79;
   }
   
   .login-box .btnSubmit span {
@@ -163,7 +163,7 @@ const LoginPage =({history})=>{
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #551A8B);
+    background: linear-gradient(90deg, transparent, #F5CB79);
     animation: btn-anim1 1s linear infinite;
   }
   
@@ -181,7 +181,7 @@ const LoginPage =({history})=>{
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #551A8B);
+    background: linear-gradient(180deg, transparent, #F5CB79);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
   }
@@ -200,7 +200,7 @@ const LoginPage =({history})=>{
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #551A8B);
+    background: linear-gradient(270deg, transparent, #F5CB79);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
   }
@@ -219,7 +219,7 @@ const LoginPage =({history})=>{
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #551A8B);
+    background: linear-gradient(360deg, transparent, #F5CB79);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
   }

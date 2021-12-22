@@ -125,18 +125,18 @@ if(usersLiked){
           height: auto;
           display: flex;
           float: left;
-          border: 4px solid #551a8b;
+          border: 4px solid #3D1C0B;
           margin: 110px 10px 10px 10px;
           border-radius: 12px;
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          background-color: #fbedd2;
+          background-color: #FFE4C4;
         }
         .book-image {
           width: 200px;
           height: 260px;
           padding: 4px;
           display: block;
-          border-right: 3px solid #551a8b;
+          border-right: 3px solid #3D1C0B;
         }
 
         .imgSection {
@@ -155,19 +155,19 @@ if(usersLiked){
           height: 40px;
 
           margin: 10px 5px;
-          border: 2px solid #551a8b;
+          border: 2px solid #3D1C0B;
           border-radius: 3px;
-          background-color: #551a8b;
-          color: #fbedd2;
+          background-color: #3D1C0B;
+          color: #FFE4C4;
         }
         .btn:hover {
-          background-color: #fbedd2;
-          color: #551a8b;
+          background-color: #FFE4C4;
+          color: #3D1C0B;
         }
 
         .book-title {
           font-family: "Trattatello", fantasy;
-          border-bottom: 1px solid #551a8b;
+          border-bottom: 1px solid #3D1C0B;
         }
         .btns-div {
           display: flex;
@@ -186,11 +186,11 @@ if(usersLiked){
         .SectionComments {
           float: right;
           
-          border-top: 3px solid #551a8b;
+          border-top: 3px solid #3D1C0B;
         }
         .comment{
           display: flex;
-          border: 4px solid #551a8b; 
+          border: 4px solid #3D1C0B; 
           border-radius: 12px;
           margin:10px;
           padding: 3px;

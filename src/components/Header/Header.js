@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react/cjs/react.development";
-import logo from "../../static/logo2.png";
+import logo from "../../static/logo2.jpg";
 import UserContext from "../contexts/UserContext";
 
 const Header = () => {
@@ -77,7 +77,7 @@ const Header = () => {
          bottom:40px;
           width: 100%;
           height: 100px;
-          border-bottom:3px solid #551A8B;
+          border-bottom:3px solid #3D1C0B;
          
         }
         nav{
@@ -105,7 +105,7 @@ right: 20px;
          right: 10px;
         }
         .nav-link{
-          color: #551A8B;
+          color: #3D1C0B;
           font-size: 40px;
           font-family: "Brush Script MT", cursive;
           display: inline-block;

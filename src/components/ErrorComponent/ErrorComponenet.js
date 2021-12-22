@@ -27,14 +27,14 @@ const  ErrorComponent=()=> {
               </span>
             <style jsx>{`
               .errorSpan {
-
+                 position:fixed;
                 margin: 120px 2px 2px 2px;
                 padding: 2px;
-                background-color: #FBEDD2;
+                background-color: #FFE4C4;
                 font-size: 20px;
-                color: #551A8B;
+                color: #3D1C0B;
                 height: auto;
-                width: 300px;
+                width: 200px;
                 left: 50px;
 
                 display: flex;
