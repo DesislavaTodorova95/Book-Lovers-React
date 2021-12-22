@@ -11,7 +11,7 @@ return(
 <div className={showMore ? 'book book-flex': 'book'}>
   <div className="imgSection">
         <img className="book-image" src={imageUrl} alt="Harry Potter 1st book Cover"/>
-        <p className="author"> <small>{author}</small></p>
+        <p className="author"> <small>By { author}</small></p>
   </div>     
  <div className='book-info'>
     <h1 className='book-title'><strong>{title}</strong></h1>

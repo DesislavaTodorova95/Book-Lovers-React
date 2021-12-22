@@ -10,10 +10,10 @@ class HomePage extends Component {
       <div className="HomeWrapper">
       
         <h1>{userEmail ? userEmail +', ' : ''}Wellcome to BOOK-LOVERS platform</h1>
-        <p>
+        <h2>
           Here You can add your favourite books, that you want to share with
           others, or find new ones for you to read
-        </p>
+        </h2>
         
         <Link to="/books/allBooks">Catalog</Link>
         </div>
@@ -27,7 +27,7 @@ class HomePage extends Component {
            width:100%;
             display: block;
             text-align: center;
-            color: #FBEDD2;
+            color: black;
 
           }
           .imageDiv{
