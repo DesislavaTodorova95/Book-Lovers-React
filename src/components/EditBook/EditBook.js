@@ -92,6 +92,7 @@ const EditBook = ({ match, history }) => {
             cols="30"
             rows="7"
             defaultValue={book.description}
+            className="description"
           ></textarea>
         </p>
         <button type="submit" form="editBookForm" className="btnSubmit">
@@ -131,7 +132,7 @@ const EditBook = ({ match, history }) => {
      text-align: center;
    }    
 .book-box {
-  color: #B26F3F;
+  color: #F5CB79;
 width: 450px;
 height: 600px;
 background-color: black;
@@ -145,7 +146,7 @@ border: 2px solid black;
 
 .description{
   background-color: black;
-  color: #B26F3F;
+  color: #F5CB79;
 }
 .description:focus {
   background-color: #F5CB79;
@@ -190,7 +191,7 @@ button span:nth-child(1) {
 }
 input{
   background-color: black;
-color: #B26F3F; 
+color: #F5CB79; 
 }
 input:focus {
   background-color: #F5CB79;
@@ -335,7 +336,7 @@ ul {
 }
 input:focus,
 textarea:focus {
-  outline: 3px solid #B26F3F;
+  outline: 3px solid #F5CB79;
 }
 
 input,
