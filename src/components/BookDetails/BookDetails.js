@@ -82,7 +82,7 @@ if(usersLiked){
         <h6>{book.genre}</h6>
         <h3 className="description">{book.description}</h3>
         <div className="btns-div">
-{JSON.parse(userInfo).userId === book.addedBy ? '':
+{userInfo && JSON.parse(userInfo).userId === book.addedBy ? '':
           <button onClick={userInfo ? onLikeBtnClickHandler : ()=>{history.push('/auth/login')}} disabled={userInfo && hasLikedorIsCreator(JSON.parse(userInfo).userId, book) ? true: false} className="btn likeBtn">
             Like
           </button>}

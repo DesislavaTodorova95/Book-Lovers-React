@@ -33,7 +33,7 @@ const  ErrorComponent=()=> {
                 background-color: #FBEDD2;
                 font-size: 20px;
                 color: #551A8B;
-                height: 150px;
+                height: auto;
                 width: 300px;
                 left: 50px;
 
@@ -41,7 +41,7 @@ const  ErrorComponent=()=> {
 
                 text-align: center;
                 border: 5px solid #FF0000;
-                border-radius: 3px;
+                border-radius: 8px;
               },
               .errorText{margin:10px},
               .errorImg{

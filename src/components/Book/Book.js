@@ -37,7 +37,7 @@ return(
 
   width: 48%;
  position:relative;
-  height:500px;
+  height:510px;
   display: flex;
   float: left;
   border: 4px solid #551a8b;

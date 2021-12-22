@@ -2,7 +2,7 @@ import { useContext, useState } from "react/cjs/react.development";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
-
+import imageBook from './static/bookThought.jpg';
 const AddBookForm = ({ history }) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   if (!userInfo) {
@@ -44,7 +44,7 @@ const AddBookForm = ({ history }) => {
     }
   };
 
-  return (
+  return (<>
     <form id="addBookForm" onSubmit={onAddBookSubmit}>
      
       <div className="book-box">
@@ -109,8 +109,26 @@ const AddBookForm = ({ history }) => {
           Submit
         </button>
       </div>
-
+</form>
+<div className="imgSection">
+  <img src={imageBook} alt="Book-Thought"></img>
+</div>
       <style jsx>{`
+        .addBookForm{background-color:white;
+          width:100%;
+        height: 100%;}
+        .imgSection{
+          right:0;
+          position: absolute;
+        }
+      .imgSection img{
+        position: fixed;
+       top:100px;
+        right:0;
+        height:650px;
+        width: 500px;
+        border-left: 4px solid #551A8B;
+      }
    .addHead{
      color: #8E66B1;
      text-align: center;
@@ -323,7 +341,7 @@ button {
   border: 3px solid #551a8b;
 }
 `}</style>
-    </form>
+</>
   );
 };
 
