@@ -14,8 +14,6 @@ const RegisterPage = ({ history }) => {
   useEffect(() => {
     if (!userInfo) {
       localStorage.clear("sess-token");
-     
-      
     }
   }, [userInfo, history]);
   const { setValue } = useContext(ErrorsContext);
@@ -38,8 +36,8 @@ const RegisterPage = ({ history }) => {
 
       localStorage.setItem("sess-token", data.token);
       localStorage.setItem("userId", data.userId);
-      localStorage.setItem("email", data.email)
-      
+      localStorage.setItem("email", data.email);
+
       history.push("/");
     } catch (error) {
       setValue(error.response.data);
@@ -115,7 +113,7 @@ const RegisterPage = ({ history }) => {
         .register-box h2 {
           margin: 0 0 30px;
           padding: 0;
-          color: #F5CB79;
+          color: #f5cb79;
           text-align: center;
         }
 
@@ -149,7 +147,7 @@ const RegisterPage = ({ history }) => {
         .register-box .user-box input:valid ~ label {
           top: -20px;
           left: 0;
-          color: #F5CB79;
+          color: #f5cb79;
           font-size: 12px;
         }
 
@@ -157,7 +155,7 @@ const RegisterPage = ({ history }) => {
           position: relative;
           display: inline-block;
           padding: 10px 20px;
-          color: #F5CB79;
+          color: #f5cb79;
           font-size: 16px;
           text-decoration: none;
           text-transform: uppercase;
@@ -168,11 +166,11 @@ const RegisterPage = ({ history }) => {
         }
 
         .register-box button:hover {
-          background: #F5CB79;
+          background: #f5cb79;
           color: #fff;
           border-radius: 5px;
-          box-shadow: 0 0 5px #F5CB79, 0 0 25px #F5CB79, 0 0 50px #F5CB79,
-            0 0 100px #F5CB79;
+          box-shadow: 0 0 5px #f5cb79, 0 0 25px #f5cb79, 0 0 50px #f5cb79,
+            0 0 100px #f5cb79;
         }
 
         .register-box button span {
@@ -185,7 +183,7 @@ const RegisterPage = ({ history }) => {
           left: -100%;
           width: 100%;
           height: 2px;
-          background: linear-gradient(90deg, transparent, #F5CB79);
+          background: linear-gradient(90deg, transparent, #f5cb79);
           animation: btn-anim1 1s linear infinite;
         }
 
@@ -204,7 +202,7 @@ const RegisterPage = ({ history }) => {
           right: 0;
           width: 2px;
           height: 100%;
-          background: linear-gradient(180deg, transparent, #F5CB79);
+          background: linear-gradient(180deg, transparent, #f5cb79);
           animation: btn-anim2 1s linear infinite;
           animation-delay: 0.25s;
         }
@@ -224,7 +222,7 @@ const RegisterPage = ({ history }) => {
           right: -100%;
           width: 100%;
           height: 2px;
-          background: linear-gradient(270deg, transparent, #F5CB79);
+          background: linear-gradient(270deg, transparent, #f5cb79);
           animation: btn-anim3 1s linear infinite;
           animation-delay: 0.5s;
         }
@@ -244,7 +242,7 @@ const RegisterPage = ({ history }) => {
           left: 0;
           width: 2px;
           height: 100%;
-          background: linear-gradient(360deg, transparent, #F5CB79);
+          background: linear-gradient(360deg, transparent, #f5cb79);
           animation: btn-anim4 1s linear infinite;
           animation-delay: 0.75s;
         }
