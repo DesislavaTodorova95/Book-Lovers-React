@@ -32,7 +32,7 @@ const LoginPage =({history})=>{
       };
 
       const { data } = await axios.post(
-        "http://localhost:5000/auth/login",
+        "https://murmuring-cliffs-61613.herokuapp.com/auth/login",
         { email, password },
         config
       ).catch((error)=>{console.log(error);

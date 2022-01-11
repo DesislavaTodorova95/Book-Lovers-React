@@ -23,7 +23,7 @@ const AddBookForm = ({ history }) => {
     const book = { title, author, genre, description, imageUrl, addedBy };
 
     const bookAdded = await axios
-      .post("http://localhost:5000/books/create", {
+      .post("https://murmuring-cliffs-61613.herokuapp.com/books/create", {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${JSON.parse(userInfo).token}`,

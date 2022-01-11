@@ -27,7 +27,7 @@ const RegisterPage = ({ history }) => {
       };
 
       const { data } = await axios.post(
-        "http://localhost:5000/auth/register",
+        "https://murmuring-cliffs-61613.herokuapp.com/auth/register",
         { email, password, rePass },
         config
       );
