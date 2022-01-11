@@ -6,10 +6,10 @@ import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
 import imageBooks from "./static/books.jpg"
 const EditBook = ({ match, history }) => {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo,  } = useContext(UserContext);
   const [book, setBook] = useState("");
   const { setValue } = useContext(ErrorsContext);
-  const [token, setToken] = useState("");
+  const [, setToken] = useState("");
 
   useEffect(() => {
     if (userInfo) {

@@ -6,8 +6,8 @@ import UserContext from "../contexts/UserContext";
 const LoginPage =({history})=>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState(null);
-  const [userId, setUserId] = useState(null);
+  const [, setToken] = useState(null);
+  const [, setUserId] = useState(null);
   const { userInfo, setUserInfo } = useContext(UserContext);
   const { setValue}= useContext(ErrorsContext)
   

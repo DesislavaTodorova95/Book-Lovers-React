@@ -12,7 +12,7 @@ import baseUrl from "../../services/api";
 const BookDetails = ({ match, history }) => {
   const { setValue } = useContext(ErrorsContext);
   const [book, setBook] = useState("");
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo,  } = useContext(UserContext);
   const [error, setError] = useState(null);
 
   useEffect(() => {

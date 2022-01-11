@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useContext } from "react/cjs/react.development";
 import baseUrl from "../../services/api";
-import bookServices from "../../services/bookServices";
+
 import Book from "../Book/Book";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
@@ -10,7 +10,7 @@ const Favourites = ({ history }) => {
   const [myBooks, setMyBooks] = useState([]);
   const { userInfo } = useContext(UserContext);
   const { setValue } = useContext(ErrorsContext);
-  const [user, setUser] = useState("");
+ 
   useEffect(() => {
     if (userInfo) {
       const userId = JSON.parse(userInfo).userId;

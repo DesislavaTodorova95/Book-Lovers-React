@@ -4,7 +4,7 @@ import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import imageBook from './static/bookThought.jpg';
 const AddBookForm = ({ history }) => {
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const { userInfo,  } = useContext(UserContext);
   if (!userInfo) {
     history.push("/");
   }

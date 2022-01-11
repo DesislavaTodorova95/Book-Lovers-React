@@ -1,11 +1,11 @@
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react/cjs/react.development";
-import UserContext from "../contexts/UserContext";
+import {  useState } from "react/cjs/react.development";
+
 const Book = ({_id,
   title, author, genre, description, imageUrl, likes, addedBy, comments,
 })=>{
-  const {userInfo, }= useContext(UserContext)
+  
   const [showMore, setShowMore] = useState(false);
 return(
 <div className={showMore ? 'book book-flex': 'book'}>
