@@ -1,7 +1,7 @@
 // import axios from "axios";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useContext, useState, useEffect } from "react/cjs/react.development";
+import React, { useContext, useState, useEffect } from "react/cjs/react.development";
 import Comment from "../Comment/Comment";
 import bookServices from "../../services/bookServices";
 import ErrorsContext from "../contexts/ErrorContext";

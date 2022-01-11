@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react/cjs/react.development";
+import React, { useContext, useEffect, useState } from "react/cjs/react.development";
 import logo from "../../static/logo2.jpg";
 import UserContext from "../contexts/UserContext";
 
@@ -13,7 +13,7 @@ const Header = () => {
   useEffect(() => {
     setUser(userInfo);
   }, [userInfo]);
-  console.log("userInfo", userInfo);
+ 
   const logout = () => {
     localStorage.clear();
     setUserInfo(null);

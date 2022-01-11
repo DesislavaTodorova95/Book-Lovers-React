@@ -1,6 +1,6 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import errorIcon from './static/error.png'
-import { useEffect } from "react/cjs/react.development";
+import  { useEffect } from "react/cjs/react.development";
 import ErrorsContext from "../contexts/ErrorContext";
 
 const  ErrorComponent=()=> {

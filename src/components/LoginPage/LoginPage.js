@@ -1,6 +1,6 @@
 import axios from "axios";
 import ErrorsContext from "../contexts/ErrorContext";
-import { useContext, useState, useEffect } from "react/cjs/react.development";
+import React, { useContext, useState, useEffect } from "react/cjs/react.development";
 import UserContext from "../contexts/UserContext";
 
 const LoginPage =({history})=>{
