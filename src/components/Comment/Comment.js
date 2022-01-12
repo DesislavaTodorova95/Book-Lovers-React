@@ -18,7 +18,7 @@ return(
   </Link>
 </div>
 <p className="addedAt">
-  <small><bold>addedAt</bold></small>
+  <small>addedAt</small>
   <br />
   <small>10.12.21</small>
 </p>
