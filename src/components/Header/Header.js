@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react/cjs/react.development";
 import logo from "../../static/logo2.jpg";
 import UserContext from "../contexts/UserContext";
-
+import './Header.css'
 const Header = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [user, setUser] = useState(null);
@@ -20,23 +20,23 @@ const Header = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container-header">
       <img src={logo} className="logo" alt="bookImage" />
-      <nav>
-        <ul>
+      <nav className="headerNavigation">
+        <ul className="ulList">
           {user ? (
             <>
-              <li>
+              <li className="list">
                 <Link className="nav-link" onClick={logout} to="/auth/logout">
                   Logout
                 </Link>
               </li>
-              <li>
+              <li className="list">
                 <Link className="nav-link" to="/books/add-book">
                   Add Book
                 </Link>
               </li>{" "}
-              <li>
+              <li className="list">
                 <Link className="nav-link" to="/books/my-favourites">
                   My Favourites
                 </Link>
@@ -44,19 +44,19 @@ const Header = () => {
             </>
           ) : (
             <>
-              <li>
+              <li className="list">
                 <Link className="nav-link" to="/auth/register">
                   Register
                 </Link>
               </li>
-              <li>
+              <li className="list">
                 <Link className="nav-link" to="/auth/login">
                   Login
                 </Link>
               </li>
             </>
           )}
-          <li>
+          <li className="list">
             <Link className="nav-link" to="/books/allBooks">
               Catalog
             </Link>
@@ -64,80 +64,8 @@ const Header = () => {
         </ul>
       </nav>
 
-      <style jsx>{`li a {
-          text-decoration: none;
-        }
-        .container {
-          background: #f5cb79;
-         position: fixed;
-          text-align: center;
-          z-index: 999;
-          display: flex;
-          top:0;
-         bottom:40px;
-          width: 100%;
-          height: 100px;
-          border-bottom:3px solid #3D1C0B;
-         
-        }
-        nav{
-          text-align: right;
-position: fixed;
-right: 20px; 
-        
-        }
-        .logo {
-        
-          float: left;
-          padding: 10px 0;
-          }
-         ul{
-          float: right;
-         text-align: right;
-        }
-        nav li{
-         display: inline-block;
-        float: right;
-        margin-left: 40px;
-        margin-right: 0;
-         padding-top: 25px;
-       
-         right: 10px;
-        }
-        .nav-link{
-          color: #3D1C0B;
-          font-size: 40px;
-          font-family: "Brush Script MT", cursive;
-          display: inline-block;
-          width: 100%
-          height: 5px;
-          }
-        a:hover{
-         color: #A1033D
-        }
-        @media screen and (max-width: 580px) {
-          .logo{display: none}
-          .container {
-    padding: 20px 10px !important; 
-    height: auto;
-    
-         }
-  ul{
-   
-    float:right;
-  }
-    nav a {
-      width: 100px;
-display: block;
-text-align: center;
-padding: 12px;
-    padding-top: 12px;
-    padding-right: 12px;
-    padding-bottom: 12px;
-    padding-left: 12px;
-float: left;
-}
-}  `}</style>
+     
+
     </div>
   );
 };

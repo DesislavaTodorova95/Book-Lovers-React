@@ -1,0 +1,89 @@
+.bookDetailsDiv {
+          
+    width: 90%;
+    height: auto;
+    display: flex;
+    float: left;
+    border: 4px solid #3D1C0B;
+    margin: 110px 10px 10px 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #FFE4C4;
+  }
+  .book-image {
+    width: 200px;
+    height: 260px;
+    padding: 4px;
+    display: block;
+    border-right: 3px solid #3D1C0B;
+  }
+
+  .imgSection {
+    float: right;
+  }
+  .author {
+    text-align: left;
+    padding-left: 25px;
+  }
+  .book-info {
+    float: left;
+    margin-left: 20px;
+  }
+  .btnCommon {
+    width: 90px;
+    height: 40px;
+
+    margin: 10px 5px;
+    border: 2px solid #3D1C0B;
+    border-radius: 3px;
+    background-color: #3D1C0B;
+    color: #FFE4C4;
+  }
+  .btnCommon:hover {
+    background-color: #FFE4C4;
+    color: #3D1C0B;
+  }
+
+  .book-title {
+    font-family: "Trattatello", fantasy;
+    border-bottom: 1px solid #3D1C0B;
+  }
+  .btns-div {
+    display: flex;
+  }
+  .material-icons {
+    color: red;
+  }
+  .description {
+    text-decoration: none;
+    font-family: "Helvetica", sans-serif;
+    font-size: 16px;
+  }
+  .likes-counter {
+    text-align: center;
+  }
+  .SectionComments {
+    float: right;
+    
+    border-top: 3px solid #3D1C0B;
+  }
+  .comment{
+    display: flex;
+    border: 4px solid #3D1C0B; 
+    border-radius: 12px;
+    margin:10px;
+    padding: 3px;
+  }
+  .comment h3{
+    float: left;
+    padding-top: 0; 
+    margin: 0;
+
+  }
+   .addedAt{
+    float: right;
+margin-left: 2px;
+padding-left: 4px; 
+
+    margin-bottom: 0;
+  }

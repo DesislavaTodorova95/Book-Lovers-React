@@ -1,0 +1,34 @@
+.errorSpan {
+  position: fixed;
+  margin: 120px 2px 2px 2px;
+  padding: 2px;
+  background-color: #ffe4c4;
+  font-size: 20px;
+  color: #3d1c0b;
+  height: auto;
+  width: 200px;
+  left: 50px;
+
+  display: flex;
+
+  text-align: center;
+  border: 5px solid #ff0000;
+  border-radius: 8px;
+}
+.errorText {
+  margin: 10px;
+}
+.errorImg {
+  float: left;
+  height: 50px;
+  width: 50px;
+  margin-top: 1px;
+  margin-left: 1px;
+}
+
+.errorSpan {
+  background-color: #eb2224;
+  border: 3px solid black;
+  border-radius: 2px;
+  font-family: "Helvetica", sans-serif;
+}

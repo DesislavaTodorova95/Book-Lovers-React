@@ -8,7 +8,7 @@ import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import baseUrl from "../../services/api";
-
+import './BookDetails.css'
 const BookDetails = ({ match, history }) => {
   const { setValue } = useContext(ErrorsContext);
   const [book, setBook] = useState("");
@@ -63,7 +63,7 @@ if(usersLiked){
   
 }
   return (
-    <div className="book">
+    <div className="bookDetailsDiv">
       <div className="imgSection">
         <img
           className="book-image"
@@ -83,7 +83,7 @@ if(usersLiked){
         <h3 className="description">{book.description}</h3>
         <div className="btns-div">
 {userInfo && JSON.parse(userInfo).userId === book.addedBy ? '':
-          <button onClick={userInfo ? onLikeBtnClickHandler : ()=>{history.push('/auth/login')}} disabled={userInfo && hasLikedorIsCreator(JSON.parse(userInfo).userId, book) ? true: false} className="btn likeBtn">
+          <button onClick={userInfo ? onLikeBtnClickHandler : ()=>{history.push('/auth/login')}} disabled={userInfo && hasLikedorIsCreator(JSON.parse(userInfo).userId, book) ? true: false} className="btnCommon likeBtn">
             Like
           </button>}
           <p className="likes-counter">
@@ -97,14 +97,14 @@ if(usersLiked){
         </div>
         {userInfo && JSON.parse(userInfo).userId === book.addedBy ? (
           <Link to={`/books/edit/${match.params.bookId}`}>
-            <button className="btn">Edit</button>
+            <button className="btnCommon">Edit</button>
           </Link>
         ) : (
           ""
         )}
         {userInfo && JSON.parse(userInfo).userId === book.addedBy ? (
           <Link to={`/books/delete/${match.params.bookId}`}>
-            <button className="btn">Delete</button>
+            <button className="btnCommon">Delete</button>
           </Link>
         ) : (
           ""
@@ -113,102 +113,14 @@ if(usersLiked){
         <div className="SectionComments">
           <h1 id="commentsHeader">Comments</h1>
           <Link to="/">
-            <button className="btn">Add Comment</button>
+            <button className="btnCommon">Add Comment</button>
           </Link>
           <Comment />
         </div>
       </div>
-      <style jsx>{`
-        .book {
-          
-          width: 90%;
-          height: auto;
-          display: flex;
-          float: left;
-          border: 4px solid #3D1C0B;
-          margin: 110px 10px 10px 10px;
-          border-radius: 12px;
-          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-          background-color: #FFE4C4;
-        }
-        .book-image {
-          width: 200px;
-          height: 260px;
-          padding: 4px;
-          display: block;
-          border-right: 3px solid #3D1C0B;
-        }
-
-        .imgSection {
-          float: right;
-        }
-        .author {
-          text-align: left;
-          padding-left: 25px;
-        }
-        .book-info {
-          float: left;
-          margin-left: 20px;
-        }
-        .btn {
-          width: 90px;
-          height: 40px;
-
-          margin: 10px 5px;
-          border: 2px solid #3D1C0B;
-          border-radius: 3px;
-          background-color: #3D1C0B;
-          color: #FFE4C4;
-        }
-        .btn:hover {
-          background-color: #FFE4C4;
-          color: #3D1C0B;
-        }
-
-        .book-title {
-          font-family: "Trattatello", fantasy;
-          border-bottom: 1px solid #3D1C0B;
-        }
-        .btns-div {
-          display: flex;
-        }
-        .material-icons {
-          color: red;
-        }
-        .description {
-          text-decoration: none;
-          font-family: "Helvetica", sans-serif;
-          font-size: 16px;
-        }
-        .likes-counter {
-          text-align: center;
-        }
-        .SectionComments {
-          float: right;
-          
-          border-top: 3px solid #3D1C0B;
-        }
-        .comment{
-          display: flex;
-          border: 4px solid #3D1C0B; 
-          border-radius: 12px;
-          margin:10px;
-          padding: 3px;
-        }
-        .comment h3{
-          float: left;
-          padding-top: 0; 
-          margin: 0;
-
-        }
-         .addedAt{
-          float: right;
-     margin:left: 2px;
-     padding-left: 4px; 
+      
      
-          margin-bottom: 0;
-        }
-      `}</style>
+      
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useContext } from "react/cjs/react.development";
 import baseUrl from "../../services/api";
-
+import './Favourites.css'
 import Book from "../Book/Book";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
@@ -33,7 +33,7 @@ const Favourites = ({ history }) => {
  
   return (
     <div id="favourites">
-      <h1 className="head">{myBooks.length< 1 ? 'You haven\'t liked any books yet!':'My Favourite Books'}</h1>
+      <h1 className="headFavourites">{myBooks.length< 1 ? 'You haven\'t liked any books yet!':'My Favourite Books'}</h1>
        
        {myBooks
           .sort((a, b) => {
@@ -41,39 +41,9 @@ const Favourites = ({ history }) => {
           })
           .map((book) => <Book key={book._id} {...book} />)
       }
-      <style jsx>{`
-      .head{
-              
-             
-        margin-top:100px;
-        
-        text-transform: capitalize;
-        width: 100%;
-        position: absolute;
-        border-bottom: 4px ridge #3D1C0B;
-        background-color: #FFE4C4;
-        margin-top: 0;
-        padding-left: 30px;
-        color: #3D1C0B;
-        font-family: "Brush Script MT", cursive;
-          }
-      #favourites{
-        display: block;
-            margin-top: 100px;
-              
-                  }
-     .LackOfBookS{
-          display: block;
-            margin-top: 100px;
-          text-transform: capitalize;
-          font-family: "Brush Script MT", cursive;
-          text-align: center;
-          font-size: 30px;
-          font-style: bold;
-          color: #FFE4C4;
-        }     
-              
-             `}</style>
+     
+      
+            
     </div>
   );
 
