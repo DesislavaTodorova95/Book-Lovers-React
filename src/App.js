@@ -24,11 +24,11 @@ function App() {
   const [value, setValue] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
  
-  const logoutHandle = () => {
-    localStorage.clear();
-    setUserInfo(null);
+  // const logoutHandle = () => {
+  //   localStorage.clear();
+  //   setUserInfo(null);
     
-   }
+  //  }
 
 
   return (
@@ -46,7 +46,7 @@ function App() {
             <Route path="/auth/register" exact component={RegisterPage} />
             <Route path="/books/my-favourites" component={Favourites} />
             <Route path="/books/add-book" component={AddBookForm} />
-            <Route path="/auth/logout" render={({history})=>{logoutHandle(); history.push('/')}} />
+            <Route path="/auth/logout" />
            <Route path='/books/delete/:bookId' render={({history, match})=>{
              axios.get(`${baseUrl}/books/delete/${match.params.bookId}`).then(data => console.log(data) ).catch(error=> setValue(error));
              history.push('/');
