@@ -7,9 +7,9 @@ import UserContext from "../contexts/UserContext";
 import imageBooks from "./static/books.jpg";
 import './EditBook.css'
 const EditBook = ({ match, history }) => {
-  const { userInfo,  } = useContext(UserContext);
+  const [ userInfo,  ] = useContext(UserContext);
   const [book, setBook] = useState("");
-  const { setValue } = useContext(ErrorsContext);
+  const [ setValue ] = useContext(ErrorsContext);
   const [, setToken] = useState("");
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const EditBook = ({ match, history }) => {
       history.push("/");
     }
     try {
-      const accessToken = JSON.parse(userInfo).token;
+      const accessToken = userInfo.token;
       setToken(accessToken);
       console.log(accessToken);
       const bookId = match.params.bookId;
@@ -46,7 +46,7 @@ const EditBook = ({ match, history }) => {
         .put(`${baseUrl}/books/edit/${bookId}`, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${JSON.parse(userInfo).token}`,
+            Authorization: `Bearer ${userInfo.token}`,
           },
           body: updatedBook,
         })

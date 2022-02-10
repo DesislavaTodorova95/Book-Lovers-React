@@ -9,12 +9,13 @@ import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import baseUrl from "../../services/api";
 import './BookDetails.css'
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 const BookDetails = ({ match, history }) => {
-  const { setValue } = useContext(ErrorsContext);
+  const [ setValue ] = useContext(ErrorsContext);
   const [book, setBook] = useState("");
-  const { userInfo,  } = useContext(UserContext);
+  const [ userInfo,  ] = useContext(UserContext);
   const [error, setError] = useState(null);
-
+const [loginRedirect, setLoginRedirect]= useState(false);
   useEffect(() => {
     bookServices.getOne(match.params.bookId).then((res) => setBook(res));
   }, [match.params.bookId]);
@@ -23,19 +24,24 @@ const BookDetails = ({ match, history }) => {
     setValue(error);
     setError(null);
   }
+  
   const onLikeBtnClickHandler = async (e) => {
     e.preventDefault();
     try {
-     
+     if(!userInfo){
+       setLoginRedirect(true)
+     }else {
       const bookId = match.params.bookId;
-      const userId = JSON.parse(userInfo).userId;
+    
+      const userId =userInfo.userId;
+      
     
       
       const LikedBook = await axios
         .put(`${baseUrl}/books/like/${bookId}`, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${JSON.parse(userInfo).token}`,
+            Authorization: `Bearer ${userInfo.token}`,
           },
           body: { book, userId },
         })
@@ -46,7 +52,7 @@ const BookDetails = ({ match, history }) => {
 
       if (LikedBook.data) {
         setBook(LikedBook.data);
-      }
+      }}
     } catch (error) {
       console.log(error);
     }
@@ -59,8 +65,11 @@ const  hasLikedorIsCreator= (userId, book)=>{
 if(usersLiked){
    return usersLiked.find(x=> x=== userId)? true: false;
   }else { return true}
- }else {history.push('/')}
+ }else {return <Redirect to="/" />}
   
+}
+if(loginRedirect){
+  return <Redirect to="/auth/login"></Redirect>
 }
   return (
     <div className="bookDetailsDiv">
@@ -82,8 +91,8 @@ if(usersLiked){
         <h6>{book.genre}</h6>
         <h3 className="description">{book.description}</h3>
         <div className="btns-div">
-{userInfo && JSON.parse(userInfo).userId === book.addedBy ? '':
-          <button onClick={userInfo ? onLikeBtnClickHandler : ()=>{history.push('/auth/login')}} disabled={userInfo && hasLikedorIsCreator(JSON.parse(userInfo).userId, book) ? true: false} className="btnCommon likeBtn">
+{userInfo && userInfo.userId === book.addedBy ? '':
+          <button onClick={onLikeBtnClickHandler} disabled={userInfo && hasLikedorIsCreator(userInfo.userId, book) ? true: false} className="btnCommon likeBtn">
             Like
           </button>}
           <p className="likes-counter">
@@ -95,14 +104,14 @@ if(usersLiked){
               : 0}
           </p>
         </div>
-        {userInfo && JSON.parse(userInfo).userId === book.addedBy ? (
+        {userInfo && userInfo.userId === book.addedBy ? (
           <Link to={`/books/edit/${match.params.bookId}`}>
             <button className="btnCommon">Edit</button>
           </Link>
         ) : (
           ""
         )}
-        {userInfo && JSON.parse(userInfo).userId === book.addedBy ? (
+        {userInfo && userInfo.userId === book.addedBy ? (
           <Link to={`/books/delete/${match.params.bookId}`}>
             <button className="btnCommon">Delete</button>
           </Link>

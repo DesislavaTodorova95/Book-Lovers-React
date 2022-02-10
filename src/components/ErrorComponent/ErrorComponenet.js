@@ -4,7 +4,7 @@ import { useEffect } from "react/cjs/react.development";
 import ErrorsContext from "../contexts/ErrorContext";
 import "./ErrorComponent.css";
 const ErrorComponent = () => {
-  const { value, setValue } = useContext(ErrorsContext);
+  const [ value, setValue ] = useContext(ErrorsContext);
 
   let valueList = [];
   if (value && value.length > 1) {
@@ -13,7 +13,7 @@ const ErrorComponent = () => {
   }
   useEffect(() => {
     setTimeout(() => {
-      setValue(null);
+      setValue('');
     }, 6000);
   }, [setValue, value]);
 

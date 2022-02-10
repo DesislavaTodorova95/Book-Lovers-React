@@ -19,9 +19,10 @@ import EditBook from "./components/EditBook/EditBook";
 import AddBookForm from "./components/AddBookForm/AddBookForm";
 import axios from "axios";
 import baseUrl from "./services/api";
+import Logout from "./components/Logout/Logout";
 
 function App() {
-  const [value, setValue] = useState(null);
+  const [value, setValue] = useState('');
   const [userInfo, setUserInfo] = useState(null);
  
   // const logoutHandle = () => {
@@ -33,8 +34,8 @@ function App() {
 
   return (
     <div id="root">
-      <UserContext.Provider value={{ userInfo, setUserInfo }}>
-        <ErrorsContext.Provider value={{ value, setValue }}>
+      <UserContext.Provider value={[ userInfo, setUserInfo ]}>
+        <ErrorsContext.Provider value={[value, setValue ]}>
           <Header />
           <ErrorComponent></ErrorComponent>
           <Switch>
@@ -46,7 +47,7 @@ function App() {
             <Route path="/auth/register" exact component={RegisterPage} />
             <Route path="/books/my-favourites" component={Favourites} />
             <Route path="/books/add-book" component={AddBookForm} />
-            <Route path="/auth/logout" />
+            <Route path="/auth/logout" component={Logout}/>
            <Route path='/books/delete/:bookId' render={({history, match})=>{
              axios.get(`${baseUrl}/books/delete/${match.params.bookId}`).then(data => console.log(data) ).catch(error=> setValue(error));
              history.push('/');

@@ -1,22 +1,34 @@
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+
 import React, { useContext, useEffect, useState } from "react/cjs/react.development";
 import logo from "../../static/logo2.jpg";
 import UserContext from "../contexts/UserContext";
 import './Header.css'
 const Header = () => {
-  const { userInfo, setUserInfo } = useContext(UserContext);
-  const [user, setUser] = useState(null);
-
+  
+  const [ userInfo, setUserInfo ] = useContext(UserContext);
+  const [user, setUser] = useState({});
+  console.log('userInfo', userInfo)
+  //added useffect
+  useEffect(()=>{const initialValue= [{userId:'', email:'', token:''}];
+setUser(initialValue)},[])
+  
+  
   if (!userInfo) {
     localStorage.clear("sess-token");
   }
   useEffect(() => {
     setUser(userInfo);
+
+    
   }, [userInfo]);
- 
+  
   const logout = () => {
     localStorage.clear();
+
     setUserInfo(null);
+    return <Redirect to="/"/>
   };
 
   return (

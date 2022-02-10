@@ -3,19 +3,20 @@ import axios from "axios";
 // import { Link } from "react-router-dom";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
-import './RegisterPage.css';
-const RegisterPage = ({ history }) => {
+import "./RegisterPage.css";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+const RegisterPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePass, setRepass] = useState("");
 
-  const { userInfo, setUserInfo } = useContext(UserContext);
+  const [ userInfo, setUserInfo ] = useContext(UserContext);
 
   useEffect(() => {
     if (!userInfo) {
       localStorage.clear("sess-token");
     }
-  }, [userInfo, history]);
+  }, [userInfo]);
   const { setValue } = useContext(ErrorsContext);
   const onRegisterSubmit = async (e) => {
     e.preventDefault();
@@ -32,18 +33,18 @@ const RegisterPage = ({ history }) => {
         config
       );
 
-      setUserInfo(JSON.stringify(data));
+      setUserInfo(data);
 
       localStorage.setItem("sess-token", data.token);
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("email", data.email);
-
-      history.push("/");
     } catch (error) {
       setValue(error.response.data);
     }
   };
-
+  if (userInfo) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="register-box">
       <h2>Register</h2>
@@ -90,9 +91,6 @@ const RegisterPage = ({ history }) => {
           Submit
         </button>
       </form>
-     
-       
-      
     </div>
   );
 };

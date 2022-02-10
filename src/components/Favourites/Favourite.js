@@ -5,18 +5,19 @@ import './Favourites.css'
 import Book from "../Book/Book";
 import ErrorsContext from "../contexts/ErrorContext";
 import UserContext from "../contexts/UserContext";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
-const Favourites = ({ history }) => {
+const Favourites = () => {
   const [myBooks, setMyBooks] = useState([]);
-  const { userInfo } = useContext(UserContext);
-  const { setValue } = useContext(ErrorsContext);
+  const [userInfo ] = useContext(UserContext);
+  const [ setValue ] = useContext(ErrorsContext);
  
   useEffect(() => {
     if (userInfo) {
-      const userId = JSON.parse(userInfo).userId;
+      const userId = userInfo.userId;
       fetch(`${baseUrl}/books/favourites/${userId}`, {
         headers: {
-          Authorization: `Bearer ${JSON.parse(userInfo).token}`,
+          Authorization: `Bearer ${userInfo.token}`,
         },
       })
         .then((data) => data.json())
@@ -25,9 +26,9 @@ const Favourites = ({ history }) => {
           setValue(error.message);
         });
     } else {
-      history.push("/");
+      return <Redirect to="/"/>;
     }
-  }, [history, setValue, userInfo]);
+  }, [setValue, userInfo]);
 
   //when auth is done i must set this part
  
@@ -35,8 +36,7 @@ const Favourites = ({ history }) => {
     <div id="favourites">
       <h1 className="headFavourites">{myBooks.length< 1 ? 'You haven\'t liked any books yet!':'My Favourite Books'}</h1>
        
-       {myBooks
-          .sort((a, b) => {
+       {myBooks.sort((a, b) => {
             return a.title.localeCompare(b.title);
           })
           .map((book) => <Book key={book._id} {...book} />)
