@@ -44,8 +44,9 @@ const LoginPage = () => {
           config
         )
         .catch((error) => {
+        console.log(error)
          
-          setValue(error.response);
+          throw new Error(error.response.data)
         });
 console.log('value must be null', value)
       setUserInfo(data);
@@ -56,7 +57,8 @@ console.log('value must be null', value)
       localStorage.setItem("email", data.email);
      
     } catch (error) {
-      
+      console.log('sec' +error)
+      console.log(value)
      setValue(error.message)
     }
   };

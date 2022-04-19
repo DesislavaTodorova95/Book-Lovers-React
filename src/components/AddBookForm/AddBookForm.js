@@ -18,7 +18,7 @@ const AddBookForm = () => {
   const [description, setDescription] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [addedBook, setAddedBook] = useState("");
-  const [ setValue ] = useContext(ErrorsContext);
+  const [ value, setValue ] = useContext(ErrorsContext);
 
   const onAddBookSubmit = async (e) => {
     e.preventDefault();
@@ -35,11 +35,15 @@ const AddBookForm = () => {
         body: book,
       })
       .catch((error) => {
-        if (error.response.data.message) {
+        console.log(error)
+        if (error.message) {
+          console.log(error.response.data.message);
+          console.log('value in error.data message', value);
           setValue(error.response.data.message);
+          
         } else {
-          console.log(error);
-          setValue(error.response.datamessage);
+         
+          setValue(error.message);
         }
       });
     if (bookAdded) {

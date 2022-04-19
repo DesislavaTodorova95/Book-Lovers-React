@@ -11,13 +11,13 @@ const RegisterPage = () => {
   const [rePass, setRepass] = useState("");
 
   const [ userInfo, setUserInfo ] = useContext(UserContext);
-
+  const [ value, setValue ] = useContext(ErrorsContext);
   useEffect(() => {
     if (!userInfo) {
       localStorage.clear("sess-token");
     }
   }, [userInfo]);
-  const { setValue } = useContext(ErrorsContext);
+  
   const onRegisterSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -31,7 +31,9 @@ const RegisterPage = () => {
         "https://murmuring-cliffs-61613.herokuapp.com/auth/register",
         { email, password, rePass },
         config
-      );
+      ).catch((error)=>{
+       throw new Error(error.response.data)
+      });
 
       setUserInfo(data);
 
@@ -39,8 +41,10 @@ const RegisterPage = () => {
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("email", data.email);
     } catch (error) {
-      setValue(error.response.data);
+      console.log(value)
+     setValue(error.message)
     }
+  
   };
   if (userInfo) {
     return <Redirect to="/" />;
